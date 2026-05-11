@@ -1,0 +1,14 @@
+{
+  "objective": "{{OBJECTIVE}}",
+  "current_task": "T001",
+  "last_completed_task": null,
+  "last_verification": null,
+  "last_verification_result": null,
+  "session_name": "{{SESSION_NAME}}",
+  "judge_required": false,
+  "judge_trigger": null,
+  "judge_confidence_threshold": 0.70,
+  "last_judge_task": null,
+  "last_judge_verdict": null,
+  "blockers": []
+}
