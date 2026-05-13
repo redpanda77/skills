@@ -7,7 +7,7 @@ description: Write, audit, or compress a CLAUDE.md / AGENTS.md instruction file 
 
 You are helping the user produce a high-signal instruction file for a coding agent. CLAUDE.md is a **behavioral contract**, not documentation — every line must change agent behavior or be deleted.
 
-The full knowledge base for this skill lives at `/Users/gonzalorey/Documents/Tolaria/AI-KnowledgeBase/writing-claude-md/`. Use it for deep references; this file is the working procedure.
+The bundled knowledge base for this skill lives in `references/` next to this file. Read those files for deep references; this file is the working procedure.
 
 ## Core principles (apply to every output)
 
