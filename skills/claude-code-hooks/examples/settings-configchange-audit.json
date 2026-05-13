@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "ConfigChange": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PROJECT_DIR}/.claude/hooks/log-config-change.sh",
+            "args": []
+          }
+        ]
+      }
+    ]
+  }
+}
