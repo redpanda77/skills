@@ -9,6 +9,10 @@ Use this skill to design, review, implement, and debug Claude Code hooks. Hooks 
 
 Keep `SKILL.md` focused; deep material lives under `references/`, `examples/`, and `scripts/` (per [Skills](https://code.claude.com/docs/en/skills) guidance — aim for under 500 lines in `SKILL.md`). Primary sources: [Hooks reference](https://code.claude.com/docs/en/hooks), [Hooks guide](https://code.claude.com/docs/en/hooks-guide), [Skills](https://code.claude.com/docs/en/skills#add-supporting-files).
 
+## Related skills
+
+- **`claude-code-guide`** — product orientation: settings scopes, permission modes vs rules, memory, CLI/commands/env vars, tools list, plugins/channels overview. Use it when the question is broader than hook authoring; stay in this skill for hook JSON, events, matchers, and `/hooks` debugging.
+
 ## First decision
 
 Before writing a hook, decide **where** it belongs:
