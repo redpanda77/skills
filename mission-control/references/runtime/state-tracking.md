@@ -29,6 +29,10 @@ Written and updated by the worker Claude throughout execution. Read by `done-che
 ```json
 {
   "objective": "Refactor auth middleware to use JWT",
+  "project_type": "autonomous",
+  "scope_locked": false,
+  "scope_file": null,
+  "current_phase": null,
   "current_task": "T003",
   "last_completed_task": "T002",
   "last_verification": "2024-01-15T10:30:00Z",
@@ -42,6 +46,14 @@ Written and updated by the worker Claude throughout execution. Read by `done-che
   "blockers": []
 }
 ```
+
+**New fields:**
+- `project_type`: `"autonomous"`, `"human-in-the-loop"`, or `"evaluation"` — set during setup Q0
+- `scope_locked`: `true` after T000 (foundations/scope task) closes; signals that scope.md is frozen
+- `scope_file`: path to scope.md if scope locking is used (e.g. `"shared/config/scope.md"`)
+- `current_phase`: for multi-phase projects, the active phase name (e.g. `"phase_1__eda_clustering"`)
+
+`session-start` should check: if `scope_locked: false` and `project_type` is `"human-in-the-loop"` or `"evaluation"`, prompt the user to complete the foundations interview before proceeding with any phase work.
 
 **When to update state.json:**
 - On session start: set `session_name`, confirm `current_task`

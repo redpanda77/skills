@@ -6,21 +6,50 @@ A local skill is a `.md` file in `.claude/commands/`. Claude Code makes it avail
 
 ---
 
-## Which skills to write
+## Which commands to write
 
-Setup always writes these during Phase 5:
+Templates are in `references/templates/commands/`. Copy the relevant template into `.claude/commands/` and fill in project-specific values.
 
-| Command | File | Purpose |
-|---------|------|---------|
-| `/close-task` | `.claude/commands/close-task.md` | Full closure workflow for a task |
-| `/mc-status` | `.claude/commands/mc-status.md` | Show current state, last verification, judge verdict |
-| `/mc-recovery` | `.claude/commands/mc-recovery.md` | Recovery mode after context loss or crash |
+### All project types
 
-Setup writes this one only if judge is enabled:
+| Command | Template | Purpose |
+|---------|----------|---------|
+| `/session-start` | `templates/commands/session-start.md` | Orient at session start; check handoff, state, scope lock |
+| `/mc-status` | `templates/commands/mc-status.md` | Current state, last verification, judge verdict |
+| `/mc-recovery` | `templates/commands/mc-recovery.md` | Recovery after context loss or crash |
+| `/log-decision` | `templates/commands/log-decision.md` | Append to session log before any deviation or change |
+| `/handoff` | `templates/commands/handoff.md` | Compact context to handoffs/<slug>.md for clean new session |
 
-| Command | File | Purpose |
-|---------|------|---------|
-| `/run-judge` | `.claude/commands/run-judge.md` | Spawn judge subagent for current task |
+### Autonomous loop only
+
+| Command | Template | Purpose |
+|---------|----------|---------|
+| `/close-task` | `templates/commands/close-task.md` | Full closure: verify acceptance criteria, run done-check.sh, update CLOSED_TASKS.md + validation-manifest.json, commit |
+| `/run-judge` | `templates/commands/run-judge.md` | Spawn judge subagent (if judge enabled) |
+
+### Human-in-the-loop / evaluation only
+
+| Command | Template | Purpose |
+|---------|----------|---------|
+| `/close-task` | `templates/commands/close-task-human.md` | Verify outputs + notes, update state.json + PLAN.md, write closure record — human runs after reviewing output |
+
+---
+
+## /session-start
+
+See canonical template: `references/templates/commands/session-start.md`
+
+Key behaviors: checks `handoffs/` first (most recent file wins), checks `scope_locked` for analytical projects, prints phase/task/progress summary, suggests next action without starting work.
+
+---
+
+## /handoff
+
+See canonical template: `references/templates/commands/handoff.md`
+
+Exact copy of the global `~/.claude/skills/handoff/` skill — same logic, same document structure, same rules. Writes to `handoffs/<branch>.md`. Includes Resume Prompt.
+
+Proactively suggest running `/handoff` after 3+ heavy sessions, when the context-warning hook fires, or when the user says "I'll continue later."
 
 ---
 
@@ -200,17 +229,37 @@ Rules:
 - Update .mission-control/state.json at key points
 ```
 
-**3. Local commands available:**
-```markdown
-## Commands
+**3. Slash commands — for the USER to run**
 
-- /close-task [TASK_ID] — full closure workflow
-- /run-judge [TASK_ID] — spawn judge subagent (if judge enabled)
-- /mc-status — show current state
-- /mc-recovery — recovery after context loss
+Recommend these; do not invoke them autonomously:
+
+```markdown
+## Slash commands — for the USER to run
+
+| Command | When to suggest |
+|---------|----------------|
+| `/session-start` | Always — start of every session |
+| `/mc-status` | User wants a progress check mid-session |
+| `/close-task TXXX` | A task's closure contract is met |
+| `/log-decision "text"` | Any deviation from design docs or calibration call |
+| `/handoff` | Context is large, session is ending, or after 3+ long runs |
+
+After 3 or more heavy working runs, proactively suggest: "Consider running `/handoff` to compact context and start fresh."
 ```
 
-**4. Real blockers** (customize for this project's risk areas):
+**4. Project-local skills (if applicable)**
+
+If the project has specialized domain skills (e.g. query writer, persona analysis), list them in a skills table so a fresh agent knows what to load:
+
+```markdown
+## Project-local skills
+
+| Skill | Load when |
+|-------|----------|
+| `[skill-name]` | [trigger condition] |
+```
+
+**5. Real blockers** (customize for this project's risk areas):
 ```markdown
 ## Blockers (require human input)
 - [project-specific blocker 1]
@@ -226,6 +275,21 @@ Rules:
 - .mission-control/judge-rubric.md — judge criteria (if enabled)
 - done-check.sh — completion authority
 ```
+
+**6. File discipline (for analytical/data projects)**
+
+Add this block if the project produces phase outputs or has a defined output folder convention:
+
+```markdown
+## File discipline
+
+- All outputs go to `phases/phase_N__name/output/` — never the project root, never `tmp/`
+- `tmp/` is scratch only — never reference it from phase scripts
+- No versioned filenames (`_v2`, `_final`, `_new`) — overwrite the canonical output in place
+- A phase output folder contains exactly what the closure contract names — remove stale files
+```
+
+For code projects, adapt: build artifacts go to `dist/`, generated files to `generated/`, etc. The principle is the same: one canonical location, no version proliferation.
 
 If the project has existing CLAUDE.md content (architecture notes, coding conventions, etc.), preserve it. The Mission Control block is an addition, not a replacement.
 

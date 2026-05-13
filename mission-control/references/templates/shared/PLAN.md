@@ -16,6 +16,14 @@
 
 ## Tasks
 
+<!-- For multi-phase projects, group tasks under phase headers.
+     Add a > Skills: line to each phase header listing which project-local
+     skills the agent should load before starting work in that phase.
+     Example:
+       ## Phase 0 — Base Queries
+       > Skills: quik-analytics-query-writer · dwh-query-tool
+-->
+
 ### T001: [First task]
 
 Status: open

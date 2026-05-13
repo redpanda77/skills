@@ -157,6 +157,75 @@ Injects a short reminder to run validation and update PLAN.md.
 
 ---
 
+### context-warning.sh
+**Event:** Stop  
+**Fires when:** Claude stops (end of turn, session end, clear)
+
+Non-blocking. Checks transcript file size — when it exceeds ~400KB (~60% of Sonnet's 200k context window), prints a one-time warning with `/compact`, `/handoff`, `/clear` options. Uses a flag file so the warning fires only once per session, not every turn. Always exits 0.
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+INPUT=$(cat)
+TRANSCRIPT=$(echo "$INPUT" | python3 -c "import sys,json; print(json.load(sys.stdin).get('transcript_path',''))" 2>/dev/null || echo "")
+
+[ -z "$TRANSCRIPT" ] || [ ! -f "$TRANSCRIPT" ] && exit 0
+
+TRANSCRIPT_SIZE=$(stat -f%z "$TRANSCRIPT" 2>/dev/null || stat -c%s "$TRANSCRIPT" 2>/dev/null || echo 0)
+THRESHOLD=409600  # ~400KB ≈ 100k tokens ≈ 60% of 200k window
+
+FLAG_DIR="$(dirname "$TRANSCRIPT")/../tmp"
+mkdir -p "$FLAG_DIR" 2>/dev/null || true
+FLAG_FILE="$FLAG_DIR/.context_warning_fired"
+
+if [ -f "$FLAG_FILE" ]; then
+  FLAGGED_SIZE=$(cat "$FLAG_FILE" 2>/dev/null || echo 0)
+  if [ "$TRANSCRIPT_SIZE" -lt "$((FLAGGED_SIZE / 2))" ]; then
+    rm -f "$FLAG_FILE"
+  fi
+fi
+
+if [ "$TRANSCRIPT_SIZE" -gt "$THRESHOLD" ] && [ ! -f "$FLAG_FILE" ]; then
+  echo "$TRANSCRIPT_SIZE" > "$FLAG_FILE"
+  python3 - <<'PYEOF'
+import json
+msg = (
+    "\n"
+    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+    "⚠️  Context is ~60% full — now is a good time to clear it.\n\n"
+    "Options (pick one):\n"
+    "  /compact        Summarise and continue in the same session\n"
+    "  /handoff        Save full context → start fresh next session\n"
+    "  /clear          Wipe context (use /handoff first if needed)\n\n"
+    "After /handoff a file is saved to handoffs/<branch>.md.\n"
+    "Open a new Claude Code session and paste the Resume Prompt\n"
+    "from that file to pick up exactly where you left off.\n"
+    "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+)
+print(json.dumps({"type": "text", "text": msg}))
+PYEOF
+fi
+
+exit 0
+```
+
+Wire into `.claude/settings.json` as an additional Stop hook (alongside stop-if-not-done.sh if present):
+```json
+{
+  "hooks": {
+    "Stop": [
+      { "hooks": [{ "type": "command", "command": "bash .claude/hooks/stop-if-not-done.sh", "timeout": 30 }] },
+      { "hooks": [{ "type": "command", "command": "bash .claude/hooks/context-warning.sh", "timeout": 10 }] }
+    ]
+  }
+}
+```
+
+For human-in-the-loop projects (no stop-if-not-done.sh), the context-warning hook is the only Stop hook.
+
+---
+
 ## Updating hooks after setup
 
 If `protect-control-files.sh` is installed, Claude cannot edit hook files. To update hooks:
