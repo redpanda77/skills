@@ -5,61 +5,61 @@
       "source": "redpanda77/skills",
       "sourceType": "github",
       "skillPath": "skills/claude-code-agents/SKILL.md",
-      "computedHash": "3e4e76158ed93e0f5bf08bdaf2901a3085081e8f4b39b9b89a5e5ff92a9a31dd"
+      "computedHash": "c885f27224f4d00df9264c21e49d1b6c4318877b734a93f5b7757950b935cba6"
     },
     "claude-code-guide": {
       "source": "redpanda77/skills",
       "sourceType": "github",
       "skillPath": "skills/claude-code-guide/SKILL.md",
-      "computedHash": "14b2fcc3f5a552523f6f588743a8a171a9c3a741c98b9eec106434dc543af8ac"
+      "computedHash": "64198e84c25d65785a82f21280476fb32cb86c04aa257d16545d8e6dd1cfceb6"
     },
     "claude-code-hooks": {
       "source": "redpanda77/skills",
       "sourceType": "github",
       "skillPath": "skills/claude-code-hooks/SKILL.md",
-      "computedHash": "096beeb5b249e6ad8f5f4b71773785156778c4a1ccaecac598c1619f93a73897"
+      "computedHash": "ec23ade0aa33dc8a97a03fb092229a4b3fa51af21d688d4b3cb7b65cb4e8367a"
     },
     "grill-me": {
       "source": "redpanda77/skills",
       "sourceType": "github",
       "skillPath": "skills/grill-me/SKILL.md",
-      "computedHash": "6b12bdf65812650eeda7d79e56d59bc8affa5cdcbc0784ede7f8ec9e38a68abf"
+      "computedHash": "7ad8570adb577759ff35e4f371c466855a387ee7b980a67de5f6dd39d3cd16cd"
     },
     "grill-with-docs": {
       "source": "redpanda77/skills",
       "sourceType": "github",
       "skillPath": "skills/grill-with-docs/SKILL.md",
-      "computedHash": "37737d5b5d609d597962d857481cc88993aabed0f5df4991835eb2c8d4b534ac"
+      "computedHash": "42476a650073b0f824b4816685274978abad33c9f6c96fd8be92bc994c0049e9"
     },
     "handoff": {
       "source": "redpanda77/skills",
       "sourceType": "github",
       "skillPath": "skills/handoff/SKILL.md",
-      "computedHash": "bd1c9083d328a089d89f75917c359a543d9cba6f0be3540a27e690a9e1aee8a1"
+      "computedHash": "d354af0fad54f16ac112ba3dcdf86df8bdb17f603e6e68b64e83ecd0c5a5ad62"
     },
     "mission-control": {
       "source": "redpanda77/skills",
       "sourceType": "github",
       "skillPath": "skills/mission-control/SKILL.md",
-      "computedHash": "14c655baa4c413eb20e5b127e64b6e8930e7ce8c720335902e09b107224d7359"
+      "computedHash": "df893e2e80b1c827e36de63448d7501327033261443a67130887ae8bddae05dc"
     },
     "tolaria-wiki": {
       "source": "redpanda77/skills",
       "sourceType": "github",
       "skillPath": "skills/tolaria-wiki/SKILL.md",
-      "computedHash": "38bec196a7668dedf72a02cb09d474934f0c0311ee24013c76645e1956a97bd9"
+      "computedHash": "b7b1096f071660c2d3d3a18f1f122e788b52eb9824ed548c92385b57b08a1c2c"
     },
     "write-a-skill": {
       "source": "redpanda77/skills",
       "sourceType": "github",
       "skillPath": "skills/write-a-skill/SKILL.md",
-      "computedHash": "ca34fbc4b0f854197e2ace999a1b5533162dc4ebd798b7695a9cecd612907817"
+      "computedHash": "6f3654a21376d3e6c2857de30c1bab77ff526a8913ecf34b9ca005a014b86ec0"
     },
     "writing-claude-md": {
       "source": "redpanda77/skills",
       "sourceType": "github",
       "skillPath": "skills/writing-claude-md/SKILL.md",
-      "computedHash": "867cf24c197a068185b421fa429aa6bd06a3ed079e6ceeb7d8fb86852595230b"
+      "computedHash": "990f3b87800529ac4f8f88d6a58412f7c1735c7efb310b91dcebeb65fc842b0e"
     }
   }
 }
