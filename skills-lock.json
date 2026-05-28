@@ -60,6 +60,12 @@
       "sourceType": "github",
       "skillPath": "skills/writing-claude-md/SKILL.md",
       "computedHash": "990f3b87800529ac4f8f88d6a58412f7c1735c7efb310b91dcebeb65fc842b0e"
+    },
+    "creating-codex-environments": {
+      "source": "redpanda77/skills",
+      "sourceType": "github",
+      "skillPath": "skills/creating-codex-environments/SKILL.md",
+      "computedHash": "63520ef9bb1b619d063f93d2f7467fdf6abca604ce43c7b36edfce11310d3c0f"
     }
   }
 }
