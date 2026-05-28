@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "skills": {
+    "claude-code-agents": {
+      "source": "redpanda77/skills",
+      "sourceType": "github",
+      "skillPath": "skills/claude-code-agents/SKILL.md",
+      "computedHash": "9c999ad11db2bedc32be608dfc0a3db669c37dab611d69fb90dadbf29a5095e5"
+    },
+    "claude-code-guide": {
+      "source": "redpanda77/skills",
+      "sourceType": "github",
+      "skillPath": "skills/claude-code-guide/SKILL.md",
+      "computedHash": "64198e84c25d65785a82f21280476fb32cb86c04aa257d16545d8e6dd1cfceb6"
+    },
+    "claude-code-hooks": {
+      "source": "redpanda77/skills",
+      "sourceType": "github",
+      "skillPath": "skills/claude-code-hooks/SKILL.md",
+      "computedHash": "ec23ade0aa33dc8a97a03fb092229a4b3fa51af21d688d4b3cb7b65cb4e8367a"
+    },
+    "grill-me": {
+      "source": "redpanda77/skills",
+      "sourceType": "github",
+      "skillPath": "skills/grill-me/SKILL.md",
+      "computedHash": "7ad8570adb577759ff35e4f371c466855a387ee7b980a67de5f6dd39d3cd16cd"
+    },
+    "grill-with-docs": {
+      "source": "redpanda77/skills",
+      "sourceType": "github",
+      "skillPath": "skills/grill-with-docs/SKILL.md",
+      "computedHash": "42476a650073b0f824b4816685274978abad33c9f6c96fd8be92bc994c0049e9"
+    },
+    "handoff": {
+      "source": "redpanda77/skills",
+      "sourceType": "github",
+      "skillPath": "skills/handoff/SKILL.md",
+      "computedHash": "d354af0fad54f16ac112ba3dcdf86df8bdb17f603e6e68b64e83ecd0c5a5ad62"
+    },
+    "write-a-skill": {
+      "source": "redpanda77/skills",
+      "sourceType": "github",
+      "skillPath": "skills/write-a-skill/SKILL.md",
+      "computedHash": "90c04a07f553c1439843d773eba66d1470ae2d692034d647813144b1ecf4422e"
+    },
+    "writing-claude-md": {
+      "source": "redpanda77/skills",
+      "sourceType": "github",
+      "skillPath": "skills/writing-claude-md/SKILL.md",
+      "computedHash": "d4ff72e796e947486b8550da16d8a820a9376589b628d2e70c89717b6e0031d3"
+    }
+  }
+}

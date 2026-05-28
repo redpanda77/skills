@@ -26,6 +26,20 @@ Functions identically across Claude.ai, Claude Code, and API (assuming environme
 
 ---
 
+## Before You Start
+
+If the user is new to skill authoring, briefly explain the 7 components of a skill:
+
+1. **Skill directory** — kebab-case folder under `~/.claude/skills/` or `.claude/skills/`
+2. **SKILL.md** — Required file with YAML frontmatter + Markdown instructions
+3. **Frontmatter** — Name, description, triggers, tool permissions, arguments, and whether to run inline or forked to an agent
+4. **Markdown body** — Core workflow or reference knowledge Claude follows
+5. **Arguments** — Positional or named parameters passed via the slash command (e.g., `/fix-issue 123`)
+6. **Dynamic context injection** — Shell commands prefixed with `!` for live data
+7. **Supporting files** — Deep docs in `references/`, helpers in `scripts/`
+
+For the full breakdown with examples, see [references/anatomy.md](references/anatomy.md).
+
 ## Quick Start Process
 
 ```
@@ -150,10 +164,11 @@ Then: [Expected outcome]
 Present the skill as:
 
 1. **SKILL.md** - frontmatter + core workflow (under 100 lines)
-2. **references/** - detailed docs, schemas, examples
-3. **scripts/** - deterministic helpers (optional)
-4. **Test suite** - triggering + functional tests
-5. **Review checklist** - anti-patterns verified
+2. **references/anatomy.md** - skill structure reference (include if the user is new to authoring)
+3. **references/** - detailed docs, schemas, examples
+4. **scripts/** - deterministic helpers (optional)
+5. **Test suite** - triggering + functional tests
+6. **Review checklist** - anti-patterns verified
 
 See [references/GUIDE.md](references/GUIDE.md) for complete technical reference, MCP integration, testing strategies, and troubleshooting.
 
