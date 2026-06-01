@@ -11,7 +11,7 @@ Routes to the correct setup guide based on project type.
 - Invoke `write-a-skill` for the system skill. Hard gate — do not skip.
 - Invoke `claude-code-hooks` for hook design. Never write hooks manually.
 - Sequential workflow — each phase gates the next.
-- No context packaging for judges.
+- Judges use bounded context packs.
 - Judge output is authoritative. No script rewrites it.
 - No qualitative heuristics in scripts.
 

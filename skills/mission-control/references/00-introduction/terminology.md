@@ -42,8 +42,11 @@ A shell script wired to Claude Code events (Stop, PreToolUse, PostToolUse, Sessi
 ## Skill
 A reusable workflow encoded as a `.md` file with YAML frontmatter. Skills teach Claude specific patterns, domains, or procedures. The system skill is the operating manual for the project.
 
+## Agent Contract
+A reusable subagent contract placed in `.claude/agent-contracts/`. Contains read/skip lists and first-principles rules. Subagents load their contract before reading anything else.
+
 ## Context Pack
-A reusable subagent contract placed in `.claude/context-packs/`. Contains read/skip lists and first-principles contracts. Subagents load their pack first.
+A typed JSON evidence surface with a strict schema (`schema_version`, `pack_kind`, `rows`, `indexes`, `risks`). Renderers construct it; validators check it; agents read it. Not a raw dump. Not a reusable contract.
 
 ## Closed Task
 A task that has been completed, validated, and regression-protected. Closed tasks are tracked in `CLOSED_TASKS.md` and `validation-manifest.json`. Their tests are re-run by `validate-closed-tasks.sh` to catch regressions.
@@ -72,14 +75,14 @@ Where control files live:
 The script or skill that decides the workflow. The model runs the router, reads its output, and executes the router's command. The model does not decide the workflow by reasoning.
 
 ## State Hierarchy
-Judge JSON overrides precheck. Prechecks output `findings[]` only (no `passed`/`score`/`repair_route`).
+Judge JSON overrides precheck. Prechecks output `findings[]` only (no `verdict`/`principle_scores`/`must_fix`).
 
 ```
 judge exists and passed
   -> judge wins, continue (unless mechanical validator fails)
 
 judge exists and failed
-  -> judge wins, route repair from judge repair_route
+  -> judge wins, route repair from judge must_fix / concerns
 
 judge missing/stale/invalid
   -> if precheck shows mechanical issue, route mechanical repair

@@ -13,8 +13,12 @@ Hooks are automated guardrails. They block bad actions before they happen.
 | `stop-if-not-done.sh` | Stop | Blocks premature exit |
 | `block-dangerous.sh` | PreToolUse (Bash) | Blocks destructive commands |
 | `protect-control-files.sh` | PreToolUse (Write/Edit) | Blocks editing control files |
+| `worker-boundary-guard.sh` | PreToolUse (Agent) | Blocks off-route agent invocations |
 | `session-start-reminder.sh` | SessionStart | Re-injects rules |
 | `post-edit-reminder.sh` | PostToolUse (Write/Edit) | Reminds to validate |
+| `post-tool-validate.sh` | PostToolUse | Validates tool output |
+| `post-compact-audit.sh` | PostCompact | Audits after context compaction |
+| `task-sync-guard.sh` | TaskSync | Blocks out-of-order task claims |
 
 ## Rules
 

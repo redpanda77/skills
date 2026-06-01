@@ -93,7 +93,7 @@ parent/
 
 Create nested files in subdirectories where conventions diverge.
 
-Score >= 2 from these criteria:
+Score >= 0.70 from these criteria:
 - Divergent conventions
 - Sensitive/high-risk logic
 - Own commands/tooling

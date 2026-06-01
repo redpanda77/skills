@@ -12,6 +12,8 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
 - [ ] Read `references/00-introduction/README.md` — what is this and why you need it
 - [ ] Read `references/00-introduction/philosophy.md` — the harness mindset
 - [ ] Read `references/00-introduction/terminology.md` — key terms
+- [ ] Read `references/00-introduction/system-components.md` — the core components and data flow
+- [ ] Read `references/00-introduction/system-architecture/` — detailed breakdown of each component
 - [ ] Read `references/CHECKLIST.md` — this file (master checklist)
 
 ---
@@ -35,6 +37,12 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
 - [ ] Read `references/02-decide/judge-vs-validation.md` — what goes to judge vs validators
 - [ ] Read `references/02-decide/judge-principles.md` — how to design principles
 - [ ] Read `references/02-decide/implementation-plan.md` — the 6-phase implementation plan
+- [ ] Read `references/06-context-packs/README.md` — context pack discipline and scope boundaries
+- [ ] Read `references/06-context-packs/typed-context-packs.md` — schema standard and type system
+- [ ] Read `references/06-context-packs/planning-content-boundaries.md` — plan vs canonical content
+- [ ] Read `references/06-context-packs/input-output-scope.md` — broad vs deep scope rule
+- [ ] Read `references/06-context-packs/validation-and-budgets.md` — validation rules and budgets
+- [ ] Read `references/06-context-packs/content-evidence-pattern.md` — row-local evidence, ID alignment, and migration rules
 - [ ] Decide: judge needed? hook level? nested files? principle count?
 - [ ] Record: `JUDGE_NEEDED`, `HOOK_LEVEL`, `PRINCIPLE_COUNT`, `NESTED_FILES_NEEDED`
 
@@ -58,6 +66,7 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
 - [ ] Write `validate-closed-tasks.sh` — regression tests (Tier 2+)
 - [ ] Write `validate-no-blockers.sh` — open task detection
 - [ ] Write `validate-no-tampering.sh` — tampering detection (Tier 2+)
+- [ ] Write `validate-context-pack.py` — context pack validation (Tier 2+)
 - [ ] Write `close-task-check.sh` — single-task promotion check
 
 ### 3.3 Constraints (Hooks)
@@ -65,22 +74,34 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
 - [ ] Install `stop-if-not-done.sh` — blocks premature exit (use `claude-code-hooks` skill)
 - [ ] Install `block-dangerous.sh` — blocks destructive commands
 - [ ] Install `protect-control-files.sh` — blocks editing control files (Tier 2+)
+- [ ] Install `worker-boundary-guard.sh` — blocks off-route agent invocations (Tier 2+)
 - [ ] Install `session-start-reminder.sh` — re-injects rules
 - [ ] Install `post-edit-reminder.sh` — reminds to validate (optional)
+- [ ] Install `post-tool-validate.sh` — validates tool output (Tier 2+)
+- [ ] Install `post-compact-audit.sh` — audits after context compaction (Tier 2+)
+- [ ] Install `task-sync-guard.sh` — blocks out-of-order task claims (Tier 2+)
 - [ ] Wire hooks in `.claude/settings.json` (use `claude-code-hooks` skill)
 
-### 3.4 Feedback (Judge)
+### 3.4 Context Pack Validation
+- [ ] Read `references/06-context-packs/README.md`
+- [ ] Add `validate-context-pack.py` — deterministic context pack validator
+- [ ] Enforce typed context packs with `schema_version`, `pack_kind`, `rows`, `indexes`
+- [ ] Enforce hard budgets per pack kind (see `references/06-context-packs/validation-and-budgets.md`)
+- [ ] Add nesting depth checks and repeated-entity checks
+- [ ] Add plan minimalism checks — reject canonical content in plan artifacts
+
+### 3.5 Feedback (Judge)
 - [ ] Read `references/03-configure/judges.md`
 - [ ] Design principles — `references/02-decide/judge-principles.md`
 - [ ] Create judge subagent(s) — use `Agent` tool with YAML frontmatter
 - [ ] Write judge principles file — `.mission-control/judge-principles.md`
 
-### 3.5 Memory (Skills)
+### 3.6 Memory (Skills)
 - [ ] Read `references/03-configure/skills.md`
 - [ ] Create system skill (use `write-a-skill` skill)
 - [ ] Create domain skills (use `write-a-skill` skill)
 
-### 3.6 Commands
+### 3.7 Commands
 - [ ] Create slash commands in `.claude/commands/`
   - `/close-task` — closure workflow
   - `/run-judge` — spawn judge subagent
@@ -89,7 +110,7 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
   - `/session-start` — initialize new session
   - `/handoff` — pass context to next agent
 
-### 3.7 Project Structure
+### 3.8 Project Structure
 - [ ] Create `.mission-control/` directory with `state.json`
 - [ ] Create `.claude/` directory with hooks, agents, commands, skills, rules
 - [ ] Verify all files exist
@@ -104,7 +125,10 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
 - [ ] Run each hook — verify blocking works
 - [ ] Run judge on sample output — verify JSON and scores
 - [ ] Run closed-task regression — verify no false failures
+- [ ] Run context pack validation — verify all packs pass `validate-context-pack.py`
+- [ ] Verify pack budgets — no pack exceeds its kind's max size
 - [ ] Read `references/04-test/common-mistakes.md` — check for anti-patterns
+- [ ] Read `references/06-context-packs/README.md` — verify context pack discipline is applied
 
 ---
 
@@ -130,3 +154,4 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
 - Always create a system skill. Hard gate — do not skip.
 - Hooks via `claude-code-hooks` skill. Do not write them manually.
 - Skills via `write-a-skill` skill. Do not write them manually.
+- Context packs are typed evidence surfaces with hard budgets. No raw dumps. No repeated embedded entities.

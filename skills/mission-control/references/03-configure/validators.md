@@ -16,7 +16,8 @@ done-check.sh (top-level authority)
   ├── validate-no-blockers.sh    checks: no open tasks, no BLOCKED_AGENT markers
   ├── validate-global.sh         checks: typecheck + lint + full test suite
   ├── validate-closed-tasks.sh   checks: closed-task regression tests still pass (Tier 2+)
-  └── validate-no-tampering.sh   checks: no test weakening or config changes (Tier 2+)
+  ├── validate-no-tampering.sh   checks: no test weakening or config changes (Tier 2+)
+  └── validate-context-pack.py   checks: typed context pack shape, budget, nesting (Tier 2+)
 ```
 
 ## Rules

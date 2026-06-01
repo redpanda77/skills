@@ -16,9 +16,9 @@ The judge is a real Claude Code subagent (`.md` file in `.claude/agents/`). It i
 
 Judge JSON is authoritative. A passed judge overrides a failed precheck. A failed judge overrides a passed precheck.
 
-## 5. No Context Packaging for Judges
+## 5. Judges Use Bounded Context Packs
 
-The judge reads raw evidence directly. No Python script pre-packages context.
+Judges read bounded, typed context packs — not raw artifact dumps. The context pack is the evidence surface. The judge does not browse the repository for context.
 
 ## 6. Judge Output Is Authoritative
 
@@ -26,7 +26,7 @@ No script rewrites, normalizes, or migrates judge artifacts.
 
 ## 7. Judge Contracts Must Be Complete
 
-Every judge writes JSON with `passed`, `score`, `repair_route`, `judgment`, `concerns`, `category_assessments`.
+Every judge writes JSON with `verdict`, `confidence`, `principle_scores`, `threshold`, `must_fix`, `should_fix`, `evidence`, `concerns`.
 
 ## 8. No Qualitative Heuristics in Scripts
 
@@ -64,7 +64,7 @@ Keep it under 120 lines. Point to deeper docs. Do not write a 2000-line encyclop
 
 ## 16. Nested AGENTS.md for Divergent Conventions
 
-Create nested files where conventions diverge. 30–60 lines. Three sections: Conventions, Commands, Hard Rules.
+Create nested files where conventions diverge. Score each area 0.0–1.0. Where score >= 0.70, create a nested file. 30–60 lines. Three sections: Conventions, Commands, Hard Rules.
 
 ## 17. Phased Implementation — MVP First
 
@@ -93,13 +93,13 @@ Judge JSON must be efficient: omit absence, avoid duplicate shapes, prefer count
 
 Create `documentation/first-principles.md` as the durable contract. All control files must preserve it.
 
-## 23. Context Packs Are Reusable Contracts
+## 23. Subagent Read Contracts Are Reusable
 
-Place shared read/skip lists in `.claude/context-packs/`. Subagents load their pack before reading anything else.
+Place shared read/skip lists and subagent contracts in `.claude/agent-contracts/`. Subagents load their contract before reading anything else. This is the agent contract, not the context pack.
 
-## 24. The Model Reads Evidence, Not Script Output
+## 24. The Model Reads Bounded Packs, Not Raw Artifacts
 
-The model reads raw artifacts and forms its own understanding. Scripts produce compact summaries; the model reads the evidence.
+The model reads the rendered prompt, the typed context pack, and only the files explicitly named in the prompt. It does not browse raw artifacts or use the repository as a knowledge base. Scripts produce compact typed summaries; the model reads the bounded evidence surface.
 
 ## 25. Invoke Skills, Never Write Manually
 

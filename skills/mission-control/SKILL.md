@@ -14,8 +14,9 @@ Follow `references/CHECKLIST.md`. It is the single source of truth for the setup
 ## Quick start
 
 1. Read `references/00-introduction/README.md` — what this is and why you need it
-2. Read `references/CHECKLIST.md` — the master checklist
-3. Follow the checklist in order. Do not skip steps.
+2. Read `references/00-introduction/system-components.md` — the core components and data flow
+3. Read `references/CHECKLIST.md` — the master checklist
+4. Follow the checklist in order. Do not skip steps.
 
 ## What this is
 
@@ -60,8 +61,11 @@ Do NOT use for single tasks ("write a function", "fix this bug").
 
 - `references/CHECKLIST.md` — master checklist
 - `references/00-introduction/README.md` — introduction
+- `references/00-introduction/system-components.md` — the core components and data flow
+- `references/00-introduction/system-architecture/` — detailed breakdown of each component
 - `references/01-discover/README.md` — discover phase
 - `references/02-decide/README.md` — decide phase
 - `references/03-configure/README.md` — configure phase
 - `references/04-test/README.md` — test phase
 - `references/05-operate/README.md` — operate phase
+- `references/06-context-packs/README.md` — context pack discipline and scope boundaries
