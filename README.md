@@ -1,6 +1,6 @@
 # redpanda77 skills
 
-Agent skills for Claude Code and compatible agents. The flagship skill is **mission-control** — a compiler operating system for reliable, repeatable agent execution. Also includes knowledge vaults (tolaria-wiki), documentation workflows (grill-me, grill-with-docs), handoffs, skill authoring, and CLAUDE.md / AGENTS.md writing.
+Agent skills for Claude Code and compatible agents. The flagship skill is **mission-control** — a compiler operating system for reliable, repeatable agent execution. Also includes knowledge vaults (tolaria-wiki), documentation workflows (grill-me, grill-with-docs), planning workflows (writing-plans), handoffs, skill authoring, and CLAUDE.md / AGENTS.md writing.
 
 ## Original Skills
 
@@ -24,6 +24,18 @@ Configure Claude Code as a compiler operating system for reliable, repeatable ag
 ### tolaria-wiki
 
 Set up, author in, and maintain a Tolaria knowledge vault (folder of Markdown + YAML frontmatter forming a personal knowledge graph). Used for creating vault notes, processing raw notes, importing meeting recordings, and generating summaries. Tolaria is a folder-of-markdown vault format from [github.com/refactoringhq/tolaria](https://github.com/refactoringhq/tolaria).
+
+### writing-plans
+
+Write, structure, or audit a project improvement plan. Covers plan naming (P{NN}, K{NN}), directory layout, goal.md structure, knockout files, progress tracking, and the 7-step execution methodology (baseline, classify, map, change, verify, ledger, repeat).
+
+**Features:**
+- Progressive disclosure — plan index first, then goal, then knockouts, then methodology
+- Goal.md as execution contract — defines scope, boundaries, mandatory steps, and completion criteria
+- Knockouts (KOs) as independent execution slices — each KO can be validated and merged separately
+- 7-step protocol — baseline, classify, map, change, verify, ledger, repeat
+- Deviation tracking — blockers go in DEVIATIONS.md, not in memory
+- Plan type templates — reorganization, theming, feature, and audit plans
 
 ## Attribution
 
@@ -95,6 +107,7 @@ For Claude Code, the primary location is `.agents/skills/<skill-name>/`.
 | `claude-code-hooks` | Anthropic | Design, review, implement, and debug Claude Code hooks (settings, plugin, skill-scoped, agent-scoped) |
 | `claude-code-agents` | Anthropic | Design, create, review, invoke, or debug Claude Code subagents, agent teams, and agent system architecture |
 | `creating-codex-environments` | Anthropic | Scaffold local Codex configuration: custom agents, hooks, and skills |
+| `writing-plans` | Original | Write, structure, or audit a project improvement plan with knockout files and 7-step methodology |
 
 ## Test before publishing
 
