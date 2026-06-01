@@ -134,17 +134,37 @@ The final output must be materialized and consistent.
 - [ ] No stale build artifacts are mistaken for final output
 - [ ] Human-readable output is findable without opening build artifacts
 
-## 9. Commands and Skills
+## 9. Skills and Commands
 
-The operator interface must be consistent.
+The operator interface must be consistent. Skills encode knowledge; commands invoke it.
 
-- [ ] System skill exists in `.claude/skills/`
+### Skills
+
+- [ ] **System skill** exists in `.claude/skills/` — the operating manual for the harness itself
+- [ ] **Domain skill(s)** exist in `.claude/skills/` — specialized knowledge for the actual work domain (e.g., React, curriculum, data pipelines)
+- [ ] System skill lists available domain skills and when to use them
+- [ ] Domain skills are loaded on demand via `skills:` in subagent frontmatter
+- [ ] Skills are not a replacement for docs; they are the docs, encoded
+
+### Commands
+
 - [ ] All commands exist in `.claude/commands/`
 - [ ] Commands are thin shims (load skills, not duplicate logic)
 - [ ] `/close-task` loads the system skill
 - [ ] `/run-judge` spawns the judge subagent via `Agent` tool
 - [ ] `/mc-status` shows current state
 - [ ] `/mc-recovery` handles crash recovery
+
+### The difference
+
+| | System Skill | Domain Skill |
+|---|---|---|
+| **What it teaches** | How to use this harness | How to do the actual work |
+| **When it loads** | Every session | On demand per task |
+| **What it contains** | Commands, rules, workflows, preflight | Domain patterns, conventions, procedures |
+| **Can it invoke agents?** | Yes (router, judge, worker) | Yes (specialized subagents) |
+| **Is it a hard gate?** | Yes — never skip | No — create as needed |
+| **Example** | "How to close a task in this repo" | "How to write a React component in this repo" |
 
 ## 10. Escape Protocol Readiness
 
