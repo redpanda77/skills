@@ -62,9 +62,9 @@ A skill for a specific domain of work (e.g., React components, lesson drafting, 
 
 ## Tier
 The harness complexity level:
-- **Minimal** (< 30 min): `PLAN.md`, `done-check.sh`, Stop hook
-- **Standard** (30 min – 2 hrs): Minimal + regression tracking + sub-validators
-- **Strict** (2+ hrs): Standard + judge subagent + principle-based evaluation
+- **Minimal**: `PLAN.md`, `done-check.sh`, Stop hook
+- **Standard**: Minimal + regression tracking + sub-validators
+- **Strict**: Standard + judge subagent + principle-based evaluation
 
 ## Layout
 Where control files live:

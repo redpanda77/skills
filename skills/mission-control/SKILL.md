@@ -35,7 +35,7 @@ A harness is the control system around an agent that makes its work reliable, re
 
 - New project: "Set up mission control for this repo"
 - Broken system: "The agent keeps making the same mistakes"
-- Multi-step work: Projects needing >30 minutes of continuous execution
+- Multi-step work: Projects needing multiple agents, validation, or regression tracking
 - Adding rigor: "I need a judge for quality" or "regression tracking"
 
 Do NOT use for single tasks ("write a function", "fix this bug").
@@ -51,11 +51,11 @@ Do NOT use for single tasks ("write a function", "fix this bug").
 
 ## Quick reference
 
-| Tier | Duration | Adds |
-|---|---|---|
-| 1 — Minimal | < 30 min | `PLAN.md`, `done-check.sh`, Stop hook |
-| 2 — Standard | 30 min – 2 hrs | Tier 1 + regression tracking + sub-validators |
-| 3 — Strict | 2+ hrs | Tier 2 + judge subagent + principle-based evaluation |
+| Tier | Adds |
+|---|---|
+| 1 — Minimal | `PLAN.md`, `done-check.sh`, Stop hook |
+| 2 — Standard | Tier 1 + regression tracking + sub-validators |
+| 3 — Strict | Tier 2 + judge subagent + principle-based evaluation |
 
 ## Key references
 

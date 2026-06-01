@@ -15,7 +15,7 @@ Understand the project before making decisions.
 ## Output
 
 - `PROJECT_TYPE` — coding, content, data, research, mixed
-- `TIER` — Minimal (< 30 min), Standard (30 min – 2 hrs), Strict (2+ hrs)
+- `TIER` — Minimal, Standard, Strict
 - `LAYOUT` — inline (control files in repo) or external (agent-control/ outside repo)
 
 ## Next
