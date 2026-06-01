@@ -15,6 +15,7 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
 - [ ] Read `references/00-introduction/system-components.md` — the core components and data flow
 - [ ] Read `references/00-introduction/system-architecture/` — detailed breakdown of each component
 - [ ] Read `references/CHECKLIST.md` — this file (master checklist)
+- [ ] Read `references/PREFLIGHT.md` — the preflight health check
 
 ---
 
@@ -135,6 +136,7 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
 ## Phase 5: Operate (Run the harness)
 
 - [ ] Read `references/05-operate/README.md`
+- [ ] Run `references/PREFLIGHT.md` — verify harness health before every session
 - [ ] Start session — hook reminds you of protocol
 - [ ] Pick task from `PLAN.md` — work on it
 - [ ] Run `done-check.sh` — it decides if you're done

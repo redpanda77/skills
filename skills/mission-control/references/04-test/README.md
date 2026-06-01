@@ -9,6 +9,7 @@ Verify the harness works before relying on it.
 
 ## What to do
 
+- Run `references/PREFLIGHT.md` → verify harness health before testing
 - Run `done-check.sh` → must pass on current code
 - Run each hook → verify blocking works
 - Spawn judge subagent on sample output → verify JSON and scores

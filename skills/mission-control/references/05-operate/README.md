@@ -12,6 +12,7 @@ Run the harness in production. Use this every session.
 
 ## What to do
 
+- Run `references/PREFLIGHT.md` → verify harness health before every session
 - Start session → hook reminds you of protocol
 - Pick task from `PLAN.md` → work on it
 - Run `done-check.sh` → it decides if you're done

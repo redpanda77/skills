@@ -60,6 +60,7 @@ Do NOT use for single tasks ("write a function", "fix this bug").
 ## Key references
 
 - `references/CHECKLIST.md` — master checklist
+- `references/PREFLIGHT.md` — preflight health check before every session
 - `references/00-introduction/README.md` — introduction
 - `references/00-introduction/system-components.md` — the core components and data flow
 - `references/00-introduction/system-architecture/` — detailed breakdown of each component
