@@ -10,6 +10,81 @@ For migrating colors, design tokens, typography, spacing, or visual systems.
 - **Surface-by-surface migration**: Start with low-coupling surfaces (tokens, primitives) before high-drift surfaces (features)
 - **Never remove without replacement**: Every `dark:` override and inline style must be replaced with a token
 
+## Tools and Enforcement
+
+| Tool | Purpose | When to Use |
+|------|---------|-------------|
+| **Design system audit** | Raw color inventory, surface taxonomy, drift detection | Phase 00 — before any token changes |
+| **Biome** | Linting, raw color detection rules | After every phase, after every KO |
+| **CSS analysis** | Token completeness, missing mappings, duplicate sources | Phase 03 — after token definition |
+| **Visual audit** | Light mode identity check, dark mode legibility | After every phase touching components |
+| **Browser DevTools** | Computed color values, contrast ratios | During manual visual review |
+| **Capacitor tooling** | Status bar, splash screen, safe areas | Phase 07 — mobile integration |
+| **ripgrep (`rg`)** | Raw color detection, `dark:` override detection | Phase 00 audit, Phase 08 guardrails |
+
+### Design Audit Specific Commands
+
+```bash
+# Count raw colors by directory
+for dir in app components styles; do
+  echo "$dir: $(grep -r "#[0-9a-fA-F]\{3,6\}" "$dir" --include="*.tsx" --include="*.css" | wc -l)"
+done
+
+# Count dark: overrides
+rg "dark:" --include="*.tsx" | wc -l
+
+# Count inline styles with hex
+rg "style=\{\{.*#" --include="*.tsx" | wc -l
+
+# Find all CSS files
+find . -name "*.css" | sort
+
+# Check theme lock
+grep -r "forcedTheme" app/ --include="*.tsx"
+
+# Check PWA manifest colors
+cat public/manifest.json | grep -E "background_color|theme_color"
+
+# Check Ionic dark mode
+grep -r "@ionic/react/css/palettes" app/ --include="*.css"
+
+# Check Capacitor status bar
+grep -r "StatusBar" app/ --include="*.tsx"
+
+# Check splash screen
+grep -r "backgroundColor" capacitor.config.ts
+```
+
+### Design System Inventory
+
+The audit must produce a complete design system inventory:
+
+| Token Category | Examples | Where to Look |
+|---|---|---|
+| **Base semantic tokens** | `--background`, `--foreground`, `--primary` | `app/globals.css`, `tailwind.config.ts` |
+| **Context tokens** | `--context-home`, `--context-srs`, `--context-learn` | `app/globals.css`, component files |
+| **HSK tokens** | `--hsk-1` through `--hsk-9` | `app/globals.css`, `styles/hsk-badges.css` |
+| **State tokens** | `--state-loading`, `--state-error`, `--state-success` | `app/globals.css`, component files |
+| **Quiz tokens** | `--quiz-stroke`, `--quiz-outline`, `--quiz-highlight` | `app/globals.css`, `styles/quiz-theme.css` |
+| **Typography tokens** | Font family, size, weight, line-height | `app/globals.css`, `tailwind.config.ts` |
+| **Spacing tokens** | Margin, padding, gap, radius | `tailwind.config.ts`, component files |
+| **Elevation tokens** | Shadow, z-index, opacity | `app/globals.css`, component files |
+| **Mobile tokens** | Safe area, touch target, max-width | `app/globals.css`, layout files |
+
+### Surface Taxonomy
+
+The audit must classify every surface by priority and drift:
+
+| Surface | Priority | Drift | Migration Phase |
+|---|---|---|---|
+| App shell | P0 | Shadow tokens, opacity | P02-05 |
+| Shared primitives | P0 | Raw colors, dark overrides | P02-03 |
+| Content surfaces | P0 | Zinc palette, gradients | P02-06 |
+| HSK badges | P0 | Hardcoded in two files | P02-03 |
+| Feature-specific | P2 | Gradients, animations | P02-06 |
+| Ionic modules | P1 | CSS modules, inline styles | P02-06 |
+| Animations | P2 | SVG hex, canvas colors | P02-07 |
+
 ## Directory Structure
 
 ```

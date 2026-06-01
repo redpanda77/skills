@@ -9,6 +9,77 @@ For adding new functionality, APIs, or user-facing features.
 - **User-facing acceptance criteria**: What the user must see/experience
 - **Rollout strategy**: How the feature is deployed and monitored
 
+## Tools and Enforcement
+
+| Tool | Purpose | When to Use |
+|------|---------|-------------|
+| **Requirements analysis** | User stories, acceptance criteria, edge cases | Phase 00 — before design |
+| **Design system** | Component patterns, token usage, accessibility | Phase 01 — before implementation |
+| **API contract** | Type definitions, request/response shapes, error handling | Phase 01 — before backend logic |
+| **Test framework** | Unit tests, integration tests, E2E tests | Phase 04 — after implementation |
+| **Feature flags** | Gradual rollout, A/B testing, kill switches | Phase 05 — rollout |
+| **Monitoring** | Error tracking, performance metrics, user analytics | Phase 05 — after rollout |
+| **GitNexus** | Impact analysis, dependency mapping, API consumers | Phase 01 — before API changes |
+| **TypeScript** | Type checking, API contract validation | After every phase |
+| **Lighthouse** | Accessibility, performance, SEO | Phase 04 — before release |
+| **Storybook** | Component documentation, visual testing | Phase 01 — design system |
+| **Playwright/Cypress** | E2E tests, user flow validation | Phase 04 — testing |
+
+### Requirements Analysis
+
+The audit must document:
+
+| Category | What to Document | Example |
+|---|---|---|
+| **User stories** | Who, what, why | "As a user, I want to switch themes so that I can use the app at night" |
+| **Acceptance criteria** | Given/when/then | "Given the user is on Settings, when they tap Dark Mode, then the app switches to dark" |
+| **Edge cases** | Unusual conditions | "System theme changes while app is open" |
+| **Non-goals** | Explicitly out of scope | "No new theme families (warm, cool, high-contrast)" |
+| **Dependencies** | Other features or systems | "Requires next-themes 0.4.x" |
+| **Performance** | Load time, bundle size | "Theme switch must be <100ms" |
+| **Accessibility** | Screen reader, keyboard, contrast | "Theme switch must work with screen reader" |
+| **Mobile constraints** | Touch targets, safe areas, orientation | "Settings toggle must be 44pt minimum" |
+
+### API Contract Audit
+
+```bash
+# Find existing API patterns
+ls -la app/api/
+
+# Check existing type definitions
+rg "export interface" app/ --type ts | head -20
+
+# Check existing request/response patterns
+rg "export async function" app/api/ --type ts | head -20
+
+# Check error handling patterns
+rg "try {" app/api/ --type ts | wc -l
+rg "catch" app/api/ --type ts | wc -l
+
+# Check API consumers
+rg "fetch\(" app/ --type tsx | wc -l
+rg "useSWR\|useQuery\|useMutation" app/ --type tsx | wc -l
+```
+
+### Design System Audit
+
+```bash
+# Find similar existing features
+rg "similar-feature" app/ --type tsx | head -20
+
+# Check component reuse
+rg "import.*ui/" app/features/ --type tsx | head -20
+
+# Check accessibility patterns
+rg "aria-" app/ --type tsx | wc -l
+rg "role=" app/ --type tsx | wc -l
+
+# Check mobile patterns
+rg "safe-area" app/ --type tsx | wc -l
+rg "touch-action" app/ --type tsx | wc -l
+rg "max-w-\[" app/ --type tsx | wc -l
+```
+
 ## Directory Structure
 
 ```

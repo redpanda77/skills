@@ -186,3 +186,4 @@ What must be true before implementation begins.
 - `references/registry-structure.md` — Plans README.md template
 - `references/enforcement-structure.md` — Enforcement documents
 - `references/plan-types.md` — Plan types: reorganization, theming, feature, audit
+- `references/audit-checklist.md` — What to audit per plan type (tools, commands, severity)

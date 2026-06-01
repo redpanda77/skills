@@ -9,6 +9,61 @@ For restructuring code, moving files, consolidating directories, and establishin
 - **Deletion ledgers mandatory**: Every deleted path must have evidence
 - **Green-to-green validation**: Build must pass after every move
 
+## Tools and Enforcement
+
+| Tool | Purpose | When to Use |
+|------|---------|-------------|
+| **GitNexus** | Impact analysis, circular dependency detection, safe renaming | Before any file move, before any deletion, for symbol renames |
+| **Biome** | Linting, formatting, import sorting | After every KO, before any commit |
+| **React Doctor** | React-specific linting, effect rules, hook rules | After every KO affecting React components |
+| **TypeScript** | Type checking, `noEmit` validation | After every KO affecting types or imports |
+| **ripgrep (`rg`)** | Text search for imports, references, patterns | During impact analysis, during cleanup verification |
+| **find** | Directory inspection, empty directory detection | During audit, during cleanup |
+
+### GitNexus Specific Commands
+
+```bash
+# Impact analysis before moving a file with >5 consumers
+gitnexus_impact({target: "SymbolName", direction: "upstream", repo: "reponame"})
+
+# Full context (callers, callees, process participation)
+gitnexus_context({name: "SymbolName", repo: "reponame"})
+
+# Circular dependency detection
+# MATCH (a:File)-[r:CodeRelation {type: 'IMPORTS'}]->(b:File),
+#       (b)-[r2:CodeRelation {type: 'IMPORTS'}]->(a)
+# RETURN a.filePath, b.filePath
+
+# Safe multi-file rename
+gitnexus_rename({symbol_name: "OldSymbol", new_name: "NewSymbol", dry_run: true, repo: "reponame"})
+
+# Detect changes before commit
+gitnexus_detect_changes({scope: "all", repo: "reponame"})
+```
+
+### Biome Specific Commands
+
+```bash
+# Check after every KO
+npx biome check --changed
+
+# Fix auto-fixable issues
+npx biome check --changed --write
+
+# Check specific files
+npx biome check app/shared/ui/
+```
+
+### React Doctor Specific Commands
+
+```bash
+# Check React components after move
+npx react-doctor
+
+# Note: React Doctor uses doctor.config.json or doctor.config.ts
+# react-doctor.config.json is NOT accepted by current versions
+```
+
 ## Directory Structure
 
 ```
