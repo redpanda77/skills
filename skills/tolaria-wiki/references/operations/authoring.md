@@ -1,13 +1,13 @@
 # Authoring — create, classify, file, cross-link
 
-For creating any new note in an existing vault. Full type table and schemas live in `types-reference.md`; this file is the **procedure**.
+**When to read this:** When creating any new note in an existing vault. Load this first, then `references/operations/types.md` if the type is unclear. This file is the **procedure**; `types.md` is the **schema reference**.
 
 ## The 7-step procedure
 
-1. **Classify the note.** Determine `type` from user intent + content. See `types-reference.md` § "How to choose between similar types".
-2. **Pick the destination folder.** See `types-reference.md` § "Folder routing".
-3. **Pick the filename.** See `types-reference.md` § "Filename conventions". Always kebab-case, `.md`.
-4. **Build frontmatter** using the type-specific schema. Required fields per type listed in `types-reference.md`.
+1. **Classify the note.** Determine `type` from user intent + content. See `references/operations/types.md` § "How to choose between similar types".
+2. **Pick the destination folder.** See `references/operations/types.md` § "Folder routing" and `references/setup/methodology-modes.md` for methodology-specific routing.
+3. **Pick the filename.** See `references/operations/types.md` § "Filename conventions" and `references/operations/naming.md`. Always kebab-case, `.md`.
+4. **Build frontmatter** using the type-specific schema. Required fields per type listed in `references/operations/types.md`.
 5. **Cross-link** with `[[wikilinks]]`. See § "Cross-linking" below.
 6. **Write the body** with the first H1 as the display title.
 7. **If the note represents a structural change** (new initiative, new feature, new person, decision), append a line to `logs/maintenance-log.md`.
@@ -27,6 +27,16 @@ Rules:
 - Don't link to people via `related_to` — use `attendees`, `owner`, or a dedicated relationship key.
 - Don't link to a file that doesn't exist unless you're also creating it in this operation.
 - Don't link to `attachments/` — reference inline with markdown image/link syntax instead.
+- Every new note should link to at least one existing note (no orphans).
+
+### Auto-link suggestions
+
+When creating a note, suggest related notes based on shared wikilinks (see `references/orchestration/automation.md` § "Auto-Link Suggestions"):
+
+1. Read the new note's wikilinks and relationship keys.
+2. Find all notes that link to the same targets.
+3. Score by overlap and suggest top 5.
+4. If user confirms, add `related_to:` links.
 
 ## When to ask
 
@@ -97,16 +107,20 @@ User says: "Daily note for today."
 When the user has a Raw note and wants the structured version:
 
 1. Read the Raw note. Check `category:` and content.
-2. Determine destination type from category + content (see `types-reference.md` § "Raw → destination mapping").
-3. Apply the relevant authoring task above.
-4. After writing the structured note, update the Raw note:
+2. Determine destination type from category + content (see `references/operations/types.md` § "Raw → destination mapping").
+3. Generate a **context pack** (see `references/orchestration/automation.md` § "Context Packs"):
+   - The Raw note itself
+   - Existing notes of the same category
+   - Related people and initiatives
+4. Apply the relevant authoring task above.
+5. After writing the structured note, update the Raw note:
    - `status: Processed`
    - `processed_date: YYYY-MM-DD`
    - `processed_to: "[[path/to/structured-note]]"`
-5. Move the Raw file: `Raw/X.md` → `Raw/archive/X.md`.
-6. Append to `logs/maintenance-log.md`.
+6. Move the Raw file: `Raw/X.md` → `Raw/archive/X.md`.
+7. Append to `logs/maintenance-log.md`.
 
-This procedure is also the main subject of `maintenance.md` — see there for batch processing and recording imports.
+This procedure is also the main subject of `references/operations/maintenance.md` — see there for batch processing and recording imports.
 
 ## After authoring
 
@@ -116,5 +130,6 @@ End every authoring task with:
 - One-line summary of the note's contents.
 - Linked targets that don't yet exist (offer to stub them).
 - Any unanswered ambiguity (e.g., "the owner of action item 3 wasn't named — ask me").
+- If the note was generated from a Raw note, confirm the Raw was updated and moved.
 
 Never claim the note is "complete" — knowledge-base notes accrete. Just confirm it's filed correctly.

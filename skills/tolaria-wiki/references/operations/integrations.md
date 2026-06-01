@@ -1,5 +1,7 @@
 # Integrations — connecting external sources
 
+**When to read this:** When connecting an external source (meeting recorder, Slack, Jira, email, etc.) to the vault. This is the general contract; vendor-specific details are handled case-by-case.
+
 The vault is the destination. Anything outside it (meeting recorders, transcripts, Slack, Jira/Linear, email, doc exports) is a **source**. This file documents the **contract** for connecting any source — not specific vendors. Vendors change; the contract doesn't.
 
 ## The contract
@@ -103,7 +105,7 @@ for folder in "$SOURCE_DIR"/*/; do
 done
 ```
 
-Don't run this as a daemon. Run on demand (when the user says "check for new recordings") or via a manual launchd/cron entry the user opted into. See `setup.md` § "Optional extras".
+Don't run this as a daemon. Run on demand (when the user says "check for new recordings") or via a manual launchd/cron entry the user opted into. See `references/setup/setup.md` § "Optional extras".
 
 ### Clipboard / pasted text (Slack, email, doc)
 
@@ -128,7 +130,7 @@ Two flavors:
 1. Query the tracker for all tickets in a scope (JQL, Linear filter).
 2. Group by status (In Progress, In Review, Done).
 3. Create a single Raw with `category: Doc`, `source: <query>`, `source_type: "<vendor> status dump"`.
-4. Process into a `Squad Status` summary note. See `maintenance.md` § "Generating summaries".
+4. Process into a `Squad Status` summary note. See `references/operations/maintenance.md` § "Generating summaries".
 
 ### Email forwards
 

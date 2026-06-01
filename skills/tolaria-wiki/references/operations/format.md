@@ -1,5 +1,7 @@
 # Tolaria file format
 
+**When to read this:** When writing or editing a note and you need to verify frontmatter format, wikilink syntax, or type-definition structure. For naming rules, see `references/operations/naming.md`.
+
 The contract that every Tolaria-compatible note follows. Tool-agnostic — works in plain Obsidian, vanilla markdown viewers, or the Tolaria app.
 
 ## Atomic rules
