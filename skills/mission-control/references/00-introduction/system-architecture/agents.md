@@ -118,3 +118,12 @@ When a worker or judge fails, route the repair to the correct layer. Do not retr
 - Worker cannot see needed context → repair the context-pack renderer or prompt
 - Same failure repeats → route to upstream graph, plan, or control layer
 - Control system failure → Escape Protocol
+
+## See also
+
+- `references/07-agents/README.md` — agent design overview
+- `references/07-agents/agent-design.md` — frontmatter schema, categories, read/write scope
+- `references/07-agents/worker-class-contracts.md` — scoped evidence language for each worker class
+- `references/07-agents/skill-activation-and-hooks.md` — how skills activate hooks
+- `references/07-agents/agent-invocation.md` — how to invoke agents via the `Agent` tool
+- `references/07-agents/agent-manifest.md` — the `AGENT_MANIFEST.json` registry

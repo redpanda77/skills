@@ -32,3 +32,11 @@ Judges evaluate qualitative quality. They are the sole authority for:
 - Judge output is authoritative. No script rewrites it.
 - The worker spawns the judge subagent via the `Agent` tool.
 - The hook does NOT spawn the judge. It checks for the judge's verdict file.
+
+## See also
+
+- `references/07-agents/README.md` — agent design overview
+- `references/07-agents/agent-design.md` — frontmatter schema, categories, read/write scope
+- `references/07-agents/worker-class-contracts.md` — scoped evidence language for each worker class
+- `references/07-agents/agent-invocation.md` — how to invoke judge subagents via the `Agent` tool
+- `references/07-agents/agent-manifest.md` — the `AGENT_MANIFEST.json` registry

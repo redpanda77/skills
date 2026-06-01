@@ -44,6 +44,12 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
 - [ ] Read `references/06-context-packs/input-output-scope.md` — broad vs deep scope rule
 - [ ] Read `references/06-context-packs/validation-and-budgets.md` — validation rules and budgets
 - [ ] Read `references/06-context-packs/content-evidence-pattern.md` — row-local evidence, ID alignment, and migration rules
+- [ ] Read `references/07-agents/README.md` — agent design overview
+- [ ] Read `references/07-agents/agent-design.md` — frontmatter, categories, read/write scope
+- [ ] Read `references/07-agents/worker-class-contracts.md` — scoped evidence language
+- [ ] Read `references/07-agents/skill-activation-and-hooks.md` — skill activation and hook behavior
+- [ ] Read `references/07-agents/agent-invocation.md` — how to invoke agents via the Agent tool
+- [ ] Read `references/07-agents/agent-manifest.md` — the AGENT_MANIFEST.json registry
 - [ ] Decide: judge needed? hook level? nested files? principle count?
 - [ ] Record: `JUDGE_NEEDED`, `HOOK_LEVEL`, `PRINCIPLE_COUNT`, `NESTED_FILES_NEEDED`
 
@@ -53,12 +59,14 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
 
 ### 3.1 Intent
 - [ ] Read `references/03-configure/agents.md`
-- [ ] Read `references/03-configure/frontmatter.md` — how to write YAML frontmatter
+- [ ] Read `references/07-agents/agent-design.md` — how to write agent frontmatter and body
+- [ ] Read `references/07-agents/agent-manifest.md` — how to maintain the agent registry
 - [ ] Write `AGENTS.md` — map of the project (use `writing-claude-md` skill)
 - [ ] Write `CLAUDE.md` — behavioral contract (use `writing-claude-md` skill)
 - [ ] Write `PLAN.md` — task list with acceptance criteria and closure contracts
 - [ ] Write `CLOSED_TASKS.md` — closed-task registry
 - [ ] Write `validation-manifest.json` — machine-readable registry
+- [ ] Write `AGENT_MANIFEST.json` — canonical registry of all agents, categories, writes, and router actions
 
 ### 3.2 Validation
 - [ ] Read `references/03-configure/validators.md`

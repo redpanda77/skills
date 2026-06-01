@@ -63,6 +63,11 @@ Workers and judges must have bounded, correct contracts.
 - [ ] No worker is also a judge (no collapsed roles)
 - [ ] Worker authorization sidecar exists (prompt path, hash, allowed reads, write path)
 - [ ] `subagent_type` is used for custom agents, not generic prompts
+- [ ] `AGENT_MANIFEST.json` exists and is the canonical registry
+- [ ] Every agent in `.claude/agents/` is listed in the manifest
+- [ ] Every manifest entry has a corresponding `.md` file
+- [ ] Skill activation is correct: hooks are declared in skill frontmatter, not globally
+- [ ] Domain skills are loaded via `skills:` in agent frontmatter, not duplicated in agent body
 
 ## 4. State and Ledger
 

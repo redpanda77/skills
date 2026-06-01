@@ -9,7 +9,7 @@ Meta-skill for configuring Claude Code as a harness runtime.
 
 ## The checklist
 
-Follow `references/CHECKLIST.md`. It is the single source of truth for the setup process.
+Execute `references/CHECKLIST.md`. It is the single source of truth for the setup process. Every task must be completed without leaving things out.
 
 ## Quick start
 
@@ -70,3 +70,4 @@ Do NOT use for single tasks ("write a function", "fix this bug").
 - `references/04-test/README.md` — test phase
 - `references/05-operate/README.md` — operate phase
 - `references/06-context-packs/README.md` — context pack discipline and scope boundaries
+- `references/07-agents/README.md` — agent design, frontmatter, invocation, and manifest
