@@ -24,6 +24,6 @@ Hooks are automated guardrails. They block bad actions before they happen.
 
 - Hooks are hard blocks, not suggestions.
 - The agent receives the block message as its next input and must act on it.
-- Hooks are produced by the `claude-code-hooks` skill. Do not write them manually.
+- Hooks are produced by the `claude-code-guide` skill. Do not write them manually.
 - The Stop hook checks `done-check.sh` first, then judge verdicts. Scripts check, judges decide.
 - The hook does NOT spawn the judge itself. It checks for the judge's verdict file.

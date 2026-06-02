@@ -22,10 +22,11 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
 ## Phase 1: Discover (Understand the project)
 
 - [ ] Read `references/01-discover/README.md`
-- [ ] Read `references/01-discover/folder-structure.md` — what the harnessed project looks like
+- [ ] Read `references/01-discover/folder-structure.md` — quick overview of what the harnessed project looks like
+- [ ] Read `references/08-folder-structure/README.md` — detailed folder and file structure reference
 - [ ] Audit current project: what exists, what's missing, what's broken
 - [ ] Pick tier: Minimal (<30min) / Standard (30m-2h) / Strict (2h+)
-- [ ] Pick layout: Inline (files in repo) / External (agent-control/ outside)
+- [ ] Pick layout: All files inside the project (.mission-control/ and .claude/)
 - [ ] Record: `PROJECT_TYPE`, `TIER`, `LAYOUT`
 
 ---
@@ -80,7 +81,7 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
 
 ### 3.3 Constraints (Hooks)
 - [ ] Read `references/03-configure/hooks.md`
-- [ ] Install `stop-if-not-done.sh` — blocks premature exit (use `claude-code-hooks` skill)
+- [ ] Install `stop-if-not-done.sh` — blocks premature exit (use `claude-code-guide` skill)
 - [ ] Install `block-dangerous.sh` — blocks destructive commands
 - [ ] Install `protect-control-files.sh` — blocks editing control files (Tier 2+)
 - [ ] Install `worker-boundary-guard.sh` — blocks off-route agent invocations (Tier 2+)
@@ -89,7 +90,7 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
 - [ ] Install `post-tool-validate.sh` — validates tool output (Tier 2+)
 - [ ] Install `post-compact-audit.sh` — audits after context compaction (Tier 2+)
 - [ ] Install `task-sync-guard.sh` — blocks out-of-order task claims (Tier 2+)
-- [ ] Wire hooks in `.claude/settings.json` (use `claude-code-hooks` skill)
+- [ ] Wire hooks in `.claude/settings.json` (use `claude-code-guide` skill)
 
 ### 3.4 Context Pack Validation
 - [ ] Read `references/06-context-packs/README.md`
@@ -120,6 +121,8 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
   - `/handoff` — pass context to next agent
 
 ### 3.8 Project Structure
+- [ ] Read `references/08-folder-structure/tier-layouts.md` — pick the exact tree for your tier
+- [ ] Read `references/08-folder-structure/path-contracts.md` — understand authority levels
 - [ ] Create `.mission-control/` directory with `state.json`
 - [ ] Create `.claude/` directory with hooks, agents, commands, skills, rules
 - [ ] Verify all files exist
@@ -162,6 +165,6 @@ Follow this in order. Do not skip steps. Do not start Phase N until Phase N-1 is
 - The judge is always a subagent (`.claude/agents/*.md`), never a script.
 - Always invoke `writing-claude-md` to write `CLAUDE.md`. Never write it directly.
 - Always create a system skill. Hard gate — do not skip.
-- Hooks via `claude-code-hooks` skill. Do not write them manually.
+- Hooks via `claude-code-guide` skill. Do not write them manually.
 - Skills via `write-a-skill` skill. Do not write them manually.
 - Context packs are typed evidence surfaces with hard budgets. No raw dumps. No repeated embedded entities.

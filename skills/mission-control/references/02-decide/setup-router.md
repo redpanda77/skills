@@ -9,7 +9,7 @@ Routes to the correct setup guide based on project type.
 - Subagents as files — every subagent is a `.md` file in `.claude/agents/` with YAML frontmatter.
 - Invoke `writing-claude-md` for `AGENTS.md` and `CLAUDE.md`. Never write them directly.
 - Invoke `write-a-skill` for the system skill. Hard gate — do not skip.
-- Invoke `claude-code-hooks` for hook design. Never write hooks manually.
+- Invoke `claude-code-guide` for hook design. Never write hooks manually.
 - Sequential workflow — each phase gates the next.
 - Judges use bounded context packs.
 - Judge output is authoritative. No script rewrites it.

@@ -35,7 +35,7 @@ There is no such thing as a "lightweight heuristic" that stays in scripts. A heu
 ## 9. Always Use Skills for Setup
 
 - `write-a-skill` — for creating skills
-- `claude-code-hooks` — for designing hooks
+- `claude-code-guide` — for designing hooks
 - `writing-claude-md` — for producing `AGENTS.md` and `CLAUDE.md`
 
 ## 10. Subagent Frontmatter Is Critical
@@ -104,5 +104,5 @@ The model reads the rendered prompt, the typed context pack, and only the files 
 ## 25. Invoke Skills, Never Write Manually
 
 - Invoke `write-a-skill` for skill creation
-- Invoke `claude-code-hooks` for hook design
+- Invoke `claude-code-guide` for hook design
 - Invoke `writing-claude-md` for `AGENTS.md` and `CLAUDE.md`

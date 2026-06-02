@@ -16,7 +16,7 @@ Understand the project before making decisions.
 
 - `PROJECT_TYPE` — coding, content, data, research, mixed
 - `TIER` — Minimal, Standard, Strict
-- `LAYOUT` — inline (control files in repo) or external (agent-control/ outside repo)
+- `LAYOUT` — all control files inside the project (.mission-control/ and .claude/)
 
 ## Next
 

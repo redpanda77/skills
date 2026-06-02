@@ -86,6 +86,7 @@ YOU MUST get confirmation before:
 - <e.g., no filler — never open with "Great question" or "Of course">
 - <e.g., active voice>
 - <e.g., specific examples over abstractions>
+- <e.g., match response length to task complexity — short answers for simple questions, full detail for complex tasks>
 
 ## Words I never use
 
@@ -283,7 +284,7 @@ Target length: 60–100 lines. If both halves are deep, split into root + `conte
 
 Every template should include — adapted to the use case:
 
-- **Workflow** section with "ask before big changes", "summarize what changed".
+- **Workflow** section with "ask before big changes", "summarize what changed", "session summaries on stop".
 - **Hard rules** with at least one `IMPORTANT:`.
 - **Out of scope** — what to never touch.
 - **Approval requirements** if any irreversible / external-effect actions exist.

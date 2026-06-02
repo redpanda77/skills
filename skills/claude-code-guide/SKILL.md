@@ -1,48 +1,65 @@
 ---
 name: claude-code-guide
-description: Use when answering questions about Claude Code product behavior—memory and CLAUDE.md, permission modes, permissions rules, settings scopes, CLI flags, slash commands, environment variables, tools, plugins, channels, hooks at a guide level, subagents vs agent teams, and where to find official docs. Use for orientation and routing; use specialist skills for deep hook authoring or custom subagent design.
+description: Use when answering questions about Claude Code (the CLI tool), Claude Agent SDK, or Claude API. Routes to the right topic — product features, custom agents, hooks, permissions, settings, etc. — based on user intent. Use for orientation and routing; load specialist references for deep implementation detail.
 ---
 
-# Claude Code guide
+# Claude Code Guide
 
-This skill is a **router and condensed guide** to Claude Code configuration and extension points. It tracks the official documentation pages listed in `references/doc-index.md`.
+Route to the right topic based on user intent. Three areas: **Product** (CLI, settings, permissions), **Agents** (subagents, teams, frontmatter), **Hooks** (events, matchers, automation).
 
-**Prefer official docs** for exhaustive tables, UI-specific tabs, and versioned behavior. This repo’s references summarize durable concepts and link outward.
+## Quick Router
 
-## Specialist skills in this repository
+| User intent | Topic | Start here |
+| --- | --- | --- |
+| "What is CLAUDE.md / memory / rules?" | Product | `references/product/memory.md` |
+| "Shift+Tab modes / plan / auto / bypass" | Product | `references/product/permission-modes.md` |
+| "allow deny Bash(git …) rules" | Product | `references/product/permissions.md` |
+| "settings.json scopes / managed / local" | Product | `references/product/settings.md` |
+| "claude flags / -p / --agent" | Product | `references/product/cli-reference.md` |
+| "/commands in the REPL" | Product | `references/product/commands.md` |
+| "CLAUDE_CODE_* env vars" | Product | `references/product/env-vars.md` |
+| "Tool names for permissions or hooks" | Product | `references/product/tools-reference.md` |
+| "Plugins vs `.claude/` standalone" | Product | `references/product/plugins.md` |
+| "Push events into a session" | Product | `references/product/channels.md` |
+| "Skill vs subagent vs hook vs plugin?" | Agents | `references/agents/execution-decision.md` |
+| "Subagents / Explore / fork" | Agents | `references/agents/subagent-overview.md` |
+| "How to build a custom agent" | Agents | `references/agents/custom-subagent-structure.md` |
+| "Agent frontmatter fields" | Agents | `references/agents/frontmatter-fields.md` |
+| "Multiple sessions as a team" | Agents | `references/agents/agent-teams.md` |
+| "Agent patterns and composition" | Agents | `references/agents/agent-patterns.md` |
+| "Automate with hooks" | Hooks | `references/hooks/hook-lifecycle.md` |
+| "Hook events catalog" | Hooks | `references/hooks/hook-events.md` |
+| "Match syntax / if filters" | Hooks | `references/hooks/matchers-and-if.md` |
+| "Hook input/output/exit codes" | Hooks | `references/hooks/input-output.md` |
+| "Hook security / block commands" | Hooks | `references/hooks/security.md` |
+| "Debug hooks / /hooks menu" | Hooks | `references/hooks/debugging.md` |
 
-| Topic | Skill |
-| --- | --- |
-| Hooks (events, matchers, I/O, blocking, `/hooks`, fixtures) | `claude-code-hooks` |
-| Subagents (frontmatter, delegation, skills preload, patterns, validators) | `claude-code-agents` |
+## Workflow
 
-When the user needs **implementation detail** for hooks or agents, load the specialist skill instead of duplicating it here.
+1. **Identify user intent** — What is the user asking about? (see table above)
+2. **Route to topic** — Product, Agents, or Hooks
+3. **Load the reference** — Read the corresponding file
+4. **Follow the guidance** — Apply the instructions, checklists, or examples
+5. **Escalate if needed** — If the reference says "go deeper," load the deeper reference
 
-## Route common questions
+## When to Combine Topics
 
-| User intent | Start here |
-| --- | --- |
-| “What is CLAUDE.md / memory / rules?” | `references/memory.md` |
-| “Shift+Tab modes / plan / auto / bypass” | `references/permission-modes.md` |
-| “allow deny Bash(git …) rules” | `references/permissions.md` |
-| “settings.json scopes / managed / local” | `references/settings.md` |
-| “claude flags / -p / --agent” | `references/cli-reference.md` |
-| “/commands in the REPL” | `references/commands.md` |
-| “CLAUDE_CODE_* env vars” | `references/env-vars.md` |
-| “Tool names for permissions or hooks” | `references/tools-reference.md` |
-| “Plugins vs `.claude/` standalone” | `references/plugins.md` + `references/plugins-reference.md` |
-| “Push events into a session (Telegram, etc.)” | `references/channels.md` + `references/channels-reference.md` |
-| “Automate with hooks (first hook, patterns)” | `references/hooks-guide.md` → then `claude-code-hooks` |
-| “Subagents / Explore / fork” | `references/sub-agents.md` → then `claude-code-agents` |
-| “Multiple sessions as a team” | `references/agent-teams.md` |
+- **Agent + Hook**: When building an agent that needs deterministic guardrails (see `references/agents/hooks-in-agents-bridge.md`)
+- **Product + Agent**: When setting up project structure for agents (see `references/agents/repo-structure.md`)
+- **Product + Hook**: When configuring permissions alongside hooks (see `references/product/permissions.md`)
+- **All three**: When designing a complete `.claude/` project setup
 
-## Principles (short)
+## Rules
 
-- **Instructions ≠ enforcement:** `CLAUDE.md` and auto memory load as **context**; permissions and hooks enforce behavior.
-- **Scopes stack:** managed → CLI → local → project → user (see `references/settings.md` for nuance).
-- **Modes vs rules:** permission **mode** sets baseline; `permissions.allow` / `deny` / `ask` and `PreToolUse` hooks layer on top (except `bypassPermissions`, which skips the permission layer).
-- **Isolation choices:** subagents within one session; agent teams for separate Claude instances; channels for external push events.
+- Never answer from memory alone — always load the relevant reference.
+- If the user question spans multiple topics, load references in parallel.
+- If the reference is missing, fall back to the official docs URL in the frontmatter.
+- If the user asks for a checklist, load the matching checklist from `checklists/`.
+- If the user asks for an example, load from `examples/`.
+- Never duplicate deep implementation detail in the router — push it to references.
 
-## Doc index
+## Error Handling
 
-See `references/doc-index.md` for the canonical URL → local reference map.
+- Missing reference: Ask the user to clarify which topic they need.
+- Outdated reference: Check the `last_reviewed` date in the frontmatter and warn if stale.
+- Conflicting guidance: Prefer the official docs URL over the local reference.

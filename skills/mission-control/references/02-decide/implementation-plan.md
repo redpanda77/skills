@@ -20,5 +20,5 @@ The harness is built in 6 phases. Each phase gates the next. User approval requi
 - Do not add judges before deterministic validation works
 - Do not add skills before the system is operating correctly
 - Invoke `write-a-skill` for skill creation. Never write skills manually.
-- Invoke `claude-code-hooks` for hook design. Never write hooks manually.
+- Invoke `claude-code-guide` for hook design. Never write hooks manually.
 - Invoke `writing-claude-md` for `AGENTS.md` and `CLAUDE.md`. Never write them directly.

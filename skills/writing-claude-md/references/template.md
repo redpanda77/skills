@@ -45,6 +45,7 @@ Copy this and fill in. Delete sections that don't apply.
 - When unsure between two approaches, explain both and let me choose.
 - Ask clarifying questions before starting complex or ambiguous tasks.
 - After completing a task: list files changed, files intentionally not touched, follow-up needed.
+- When I say "session end" or "let's stop here" — write a session summary to MEMORY.md: what we worked on, what's completed, what's in progress, decisions made, what to pick up next.
 
 ## Human approval required (full stop)
 

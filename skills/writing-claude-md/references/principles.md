@@ -51,7 +51,7 @@ Every effective CLAUDE.md covers exactly these:
 
 1. **Critical commands** — build, test, lint, typecheck, migrate. Highest-value section.
 2. **Architecture map** — top-level folders and purpose. One line each. Not a directory listing.
-3. **Hard rules** — negative + positive imperatives. Under 15 rules. Each must prevent a specific mistake.
+3. **Hard rules** — negative + positive imperatives. Under 15 rules. Each must prevent a specific mistake. Include permanent facts / invariants: constraints that are always true regardless of the specific task.
 4. **Workflow preferences** — minimal changes, ask before big edits, separate commits, ask between approaches.
 5. **Human-approval / Out-of-scope** — what requires explicit confirmation, what to never touch.
 

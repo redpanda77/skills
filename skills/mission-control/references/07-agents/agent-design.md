@@ -28,7 +28,7 @@ skills:
 | `description` | Routing signal — the parent LLM decides whether to invoke this agent | `Use when the router detects...` |
 | `tools` | Allowed tools (comma-separated) | `Read, Write` |
 
-### Optional fields (from claude-code-agents)
+### Optional fields (from claude-code-guide)
 
 | Field | Purpose | Example |
 |-------|---------|---------|

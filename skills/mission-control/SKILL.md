@@ -71,3 +71,4 @@ Do NOT use for single tasks ("write a function", "fix this bug").
 - `references/05-operate/README.md` — operate phase
 - `references/06-context-packs/README.md` — context pack discipline and scope boundaries
 - `references/07-agents/README.md` — agent design, frontmatter, invocation, and manifest
+- `references/08-folder-structure/README.md` — folder and file structure, tier layouts, path contracts

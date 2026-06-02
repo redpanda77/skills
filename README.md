@@ -48,14 +48,17 @@ The following skills are derived from the original `mattpocock/skills` repositor
 - **grill-with-docs** — Grilling session that challenges your plan against the existing domain model, sharpens terminology, and updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise. Stress-tests a plan against the project's language and documented decisions.
 - **handoff** — Compact the current conversation into a handoff document so a fresh agent can continue this work without re-reading the full conversation. Used when context is large, switching tasks or branches, preparing for a new session, or when the user says "handoff", "save context", "resume later", or "new session".
 
+### Based on [cc-thinking-skills](https://github.com/tjboudreaux/cc-thinking-skills)
+The following skill is derived from the `cc-thinking-skills` repository by T.J. Boudreaux, which collects 39 structured thinking methodologies and mental models. These were consolidated into a single unified skill with a routing layer and validation framework:
+
+- **applying-thinking-frameworks** — Apply structured thinking methodologies (first principles, systems thinking, 5 whys, etc.) to solve problems, make decisions, and analyze systems. Routes to the right mental model based on domain and problem type. Integrates grilling and document exploration for clarifying questions before framework application.
+
 ### Based on [Anthropic Documentation](https://docs.anthropic.com/)
 The following skills are derived from official Anthropic documentation and best practices for Claude Code:
 
 - **writing-claude-md** — Write, audit, or compress a CLAUDE.md / AGENTS.md instruction file for a coding agent. Covers what to put in CLAUDE.md, why it might be ignored, and how to make Claude Code follow your conventions.
 - **write-a-skill** — Create agent skills with proper structure, progressive disclosure, and bundled resources. Covers the skill format, frontmatter design, supporting files, and progressive disclosure principles.
-- **claude-code-guide** — Router and condensed guide to Claude Code configuration and extension points. Tracks official documentation for memory, permission modes, settings, CLI flags, slash commands, hooks, subagents, and agent teams.
-- **claude-code-hooks** — Design, review, implement, and debug Claude Code hooks. Covers settings hooks, plugin hooks, skill-scoped hooks, agent-scoped hooks, hook lifecycle, events, matchers, security, and async hooks.
-- **claude-code-agents** — Design, create, review, invoke, or debug Claude Code subagents, agent teams, and the agent system architecture. Covers built-in agents, custom subagents, agent teams, file placement, frontmatter design, and the execution decision tree.
+- **claude-code-guide** — Unified router and guide to Claude Code (CLI, Agent SDK, API). Routes to product features (memory, permissions, settings, CLI), custom agents (subagents, teams, frontmatter, patterns), and hooks (events, matchers, automation, security).
 - **creating-codex-environments** — Scaffolds local Codex configuration, custom agents, hooks, and skills. Used when setting up Codex for a repo. Do not use for Claude Code or Claude Desktop setup.
 
 ## Install
@@ -103,10 +106,9 @@ For Claude Code, the primary location is `.agents/skills/<skill-name>/`.
 | `handoff` | mattpocock | Compact the current conversation into a handoff document for a fresh agent |
 | `writing-claude-md` | Anthropic | Write, audit, or compress a CLAUDE.md / AGENTS.md instruction file for a coding agent |
 | `write-a-skill` | Anthropic | Create agent skills with proper structure, progressive disclosure, and bundled resources |
-| `claude-code-guide` | Anthropic | Guide to Claude Code configuration: memory, permissions, settings, CLI flags, hooks, subagents |
-| `claude-code-hooks` | Anthropic | Design, review, implement, and debug Claude Code hooks (settings, plugin, skill-scoped, agent-scoped) |
-| `claude-code-agents` | Anthropic | Design, create, review, invoke, or debug Claude Code subagents, agent teams, and agent system architecture |
+| `claude-code-guide` | Anthropic | Unified router for Claude Code (CLI, Agent SDK, API). Covers product features, custom agents, and hooks |
 | `creating-codex-environments` | Anthropic | Scaffold local Codex configuration: custom agents, hooks, and skills |
+| `applying-thinking-frameworks` | cc-thinking-skills | Apply structured thinking methodologies (first principles, systems thinking, 5 whys, etc.) to solve problems and make decisions. Routes to the right mental model based on domain and problem type |
 | `writing-plans` | Original | Write, structure, or audit a project improvement plan with knockout files and 7-step methodology |
 
 ## Test before publishing

@@ -68,8 +68,7 @@ The harness complexity level:
 
 ## Layout
 Where control files live:
-- **Inline**: Control files are in the repo (`.claude/`, `done-check.sh`, etc.)
-- **External**: Control scripts live outside the repo (`agent-control/` directory)
+- **Inline**: All control files are inside the project (`.mission-control/` and `.claude/`)
 
 ## Router
 The script or skill that decides the workflow. The model runs the router, reads its output, and executes the router's command. The model does not decide the workflow by reasoning.

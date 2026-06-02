@@ -207,7 +207,7 @@ python3 preflight.py \
 | `loop_risk` active | Stop. Run Escape Protocol. |
 | State file corrupted | Stop. Run recovery from traces. |
 | Judge hash mismatch | Stop. Do not re-judge closed packs. Audit the change. |
-| Hook missing or bypassed | Stop. Reinstall via `claude-code-hooks` skill. |
+| Hook missing or bypassed | Stop. Reinstall via `claude-code-guide` skill. |
 | Validator missing | Stop. Create validator before proceeding. |
 | Source hash mismatch | Stop. Regenerate dependent packs. |
 

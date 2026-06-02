@@ -35,7 +35,7 @@ Only include what the agent cannot infer from one session in the repo:
 
 1. **Critical commands** — build, test, lint, typecheck, migrate. Highest-value section.
 2. **Architecture map** — top-level folders and purpose. One line each. Not a directory listing.
-3. **Hard rules** — negative + positive imperatives. Under 15 rules. Each must prevent a specific mistake.
+3. **Hard rules** — negative + positive imperatives. Under 15 rules. Each must prevent a specific mistake. Include **permanent facts / invariants**: constraints from past decisions that are always true regardless of the specific task. If a task conflicts with one, flag it before proceeding.
 4. **Workflow preferences** — minimal changes, ask before big edits, separate commits, ask between approaches.
 5. **Human-approval / Out-of-scope** — what requires explicit confirmation, what to never touch.
 
@@ -75,6 +75,7 @@ See `references/principles.md` for the full loading mechanics.
 
 - **@imports** — `@CONTEXT.md` expands inline. Use for domain vocabulary that must always be loaded.
 - **Linked docs** — `[reference.md](reference.md)` for deep docs loaded only when needed.
+- **Project-level memory files** — `MEMORY.md` for session summaries and decisions. `ERRORS.md` for logging approaches that took >2 attempts: what failed, what worked, what to remember next time. Link from CLAUDE.md, do not paste contents.
 - **Split large instructions** — if a section is >20 lines, consider extracting to a reference or skill.
 - **Monorepo-specific files** — root CLAUDE.md is high-level; package-level CLAUDE.md is specific.
 - **Local personal overrides** — `CLAUDE.local.md` for personal preferences that shouldn't be in git.

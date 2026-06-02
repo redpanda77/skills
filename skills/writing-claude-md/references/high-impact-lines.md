@@ -9,6 +9,7 @@ Copy-paste reference. Each line has measurable impact on output quality across m
 - `When unsure between two approaches, explain both and let me choose.`
 - `Ask clarifying questions before starting any complex or ambiguous task.`
 - `After completing a task: files changed, what was modified (one line per file), files intentionally not touched, follow-up needed.`
+- `When I say "session end" or "let's stop here" — write a session summary to MEMORY.md.`
 
 ## Quality
 
