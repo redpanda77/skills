@@ -109,9 +109,21 @@ After the tree, add a summary section:
 - **Unchanged directories:** 4 (`lib/`, `app/routes/`, `public/`, `styles/`)
 ```
 
+## UI Decomposition
+When documenting frontend directories (especially `components/`, `ui/`, or `features/*/components/`), apply **Atomic Design Principles** to clarify the UI hierarchy:
+
+- **Atoms:** Indivisible UI primitives (`Button`, `Input`, `Icon`)
+- **Molecules:** Simple functional groups of atoms (`SearchBar`, `FormField`)
+- **Organisms:** Complex self-contained sections (`Header`, `ProductCard`, `Sidebar`)
+- **Templates:** Page-level layouts without real data (`DashboardLayout`, `AuthLayout`)
+- **Pages:** Concrete instances of templates with real data (`DashboardPage`, `LoginPage`)
+
+Use this mapping when annotating component directories in the tree. See the `directory-tree.md` template for the full example.
+
 ## Verification Checklist
 - [ ] Every directory has a status symbol
 - [ ] Every directory has a role note (what it contains)
 - [ ] Legend is included at the top
 - [ ] Summary counts new, moved, deleted, and unchanged directories
 - [ ] Tree reflects the current state of the repo (run `tree` before writing)
+- [ ] UI directories are decomposed using atomic design principles (atoms, molecules, organisms, templates, pages)
