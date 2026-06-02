@@ -109,6 +109,7 @@ For Claude Code, the primary location is `.agents/skills/<skill-name>/`.
 | `creating-codex-environments` | Anthropic | Scaffold local Codex configuration: custom agents, hooks, and skills |
 | `applying-thinking-frameworks` | cc-thinking-skills | Apply structured thinking methodologies (first principles, systems thinking, 5 whys, etc.) to solve problems and make decisions. Routes to the right mental model based on domain and problem type |
 | `writing-plans` | Original | Write, structure, or audit a project improvement plan with knockout files and 7-step methodology |
+| `documenting-codebase` | Original | Create and maintain a structured in-repo knowledge base for a codebase. Uses parallel audit subagents and a decision tree for planning |
 | `skill-repo-manager` | Original | Manage a skill repository using the `npx skills` CLI. Covers installing, listing, updating, and publishing skills |
 
 ## Test before publishing

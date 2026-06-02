@@ -1,6 +1,6 @@
 ---
 name: mission-control
-description: Configure Claude Code as a harness runtime for reliable, repeatable agent execution. Use when setting up control systems around agents — instructions, validation, constraints, feedback, and memory. Triggers on "mission control", "harness setup", "agent infrastructure", "stop hook", "done-check", "judge subagent", or "autonomous loop".
+description: Configure Claude Code as a compiler operating system for reliable, repeatable agent execution. Use when setting up control systems around agents — instructions, validation, constraints, feedback, and memory. Triggers on "mission control", "harness setup", "agent infrastructure", "stop hook", "done-check", "judge subagent", or "autonomous loop".
 ---
 
 # Mission Control
