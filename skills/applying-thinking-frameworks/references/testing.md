@@ -54,7 +54,7 @@ Test these queries to verify the skill does NOT load:
 
 **Expected:**
 - Skill recognizes the problem is vague
-- Invokes `grill-me` before routing
+- Invokes `grill` before routing
 - After grilling, routes to appropriate methodology
 
 ### Test 4: Combine Models

@@ -1,6 +1,6 @@
 # redpanda77 skills
 
-Agent skills for Claude Code and compatible agents. The flagship skill is **mission-control** — a compiler operating system for reliable, repeatable agent execution. Also includes knowledge vaults (tolaria-wiki), documentation workflows (grill-me, grill-with-docs), planning workflows (writing-plans), handoffs, skill authoring, and CLAUDE.md / AGENTS.md writing.
+Agent skills for Claude Code and compatible agents. The flagship skill is **mission-control** — a compiler operating system for reliable, repeatable agent execution. Also includes knowledge vaults (tolaria-wiki), interviewing and planning workflows (grill), planning workflows (writing-plans), handoffs, skill authoring, and CLAUDE.md / AGENTS.md writing.
 
 ## Original Skills
 
@@ -44,8 +44,7 @@ This repository also includes skills derived from other sources:
 ### Based on [mattpocock/skills](https://github.com/mattpocock/skills)
 The following skills are derived from the original `mattpocock/skills` repository with modifications and enhancements:
 
-- **grill-me** — Interview the user before starting a feature or task using interactive multiple-choice questions. Surfaces the decisions that will meaningfully change what gets built, not what can already be inferred from the codebase.
-- **grill-with-docs** — Grilling session that challenges your plan against the existing domain model, sharpens terminology, and updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise. Stress-tests a plan against the project's language and documented decisions.
+- **grill** — Interview and stress-test the user before building. Two modes: pre-build interview (surfaces scope decisions via interactive questions) and plan stress-test (challenges a plan against the domain model, sharpens terminology, and updates CONTEXT.md/ADRs inline).
 - **handoff** — Compact the current conversation into a handoff document so a fresh agent can continue this work without re-reading the full conversation. Used when context is large, switching tasks or branches, preparing for a new session, or when the user says "handoff", "save context", "resume later", or "new session".
 
 ### Based on [cc-thinking-skills](https://github.com/tjboudreaux/cc-thinking-skills)
@@ -101,8 +100,7 @@ For Claude Code, the primary location is `.agents/skills/<skill-name>/`.
 |---|---|---|
 | `mission-control` | Original | Compiler operating system for reliable, repeatable agent execution with tiered validation and judging |
 | `tolaria-wiki` | Original | Set up and maintain a Tolaria knowledge vault (folder-of-markdown personal knowledge graph) |
-| `grill-me` | mattpocock | Interview the user before starting a feature using interactive multiple-choice questions |
-| `grill-with-docs` | mattpocock | Challenge your plan against the domain model and update documentation inline |
+| `grill` | mattpocock | Interview and stress-test the user before building. Pre-build interview + plan stress-test modes |
 | `handoff` | mattpocock | Compact the current conversation into a handoff document for a fresh agent |
 | `writing-claude-md` | Anthropic | Write, audit, or compress a CLAUDE.md / AGENTS.md instruction file for a coding agent |
 | `write-a-skill` | Anthropic | Create agent skills with proper structure, progressive disclosure, and bundled resources |

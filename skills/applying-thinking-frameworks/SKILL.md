@@ -45,8 +45,8 @@ See `references/router/combination-patterns.md` for patterns (Sequential, Parall
 
 - Never apply a framework without understanding the problem first.
 - Always verify the model fits the situation before applying it.
-- If the problem is vague, invoke `grill-me` before routing.
-- If a plan exists and needs validation, invoke `grill-with-docs`.
+- If the problem is vague, invoke `grill` before routing.
+- If a plan exists and needs validation, invoke `grill`.
 - If analysis stalls for 15+ minutes, consider switching models.
 - If the domain or problem type is not in the table, default to `first-principles` or `systems-thinking`.
 - If the methodology file is missing, fall back to `socratic` questioning to clarify the problem.
@@ -56,4 +56,4 @@ See `references/router/combination-patterns.md` for patterns (Sequential, Parall
 - Missing domain: Ask the user to clarify which domain the problem belongs to.
 - Missing methodology file: Use `socratic` questioning as a universal fallback.
 - Invalid problem type: Default to `diagnose` for technical problems, `decide` for strategic problems.
-- Grill-me or grill-with-docs unavailable: Proceed with the framework directly, but ask clarifying questions manually.
+- Grill-me or grill unavailable: Proceed with the framework directly, but ask clarifying questions manually.

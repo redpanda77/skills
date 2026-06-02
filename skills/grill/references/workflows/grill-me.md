@@ -7,7 +7,7 @@ You are interviewing the user before they start building. Your job is to surface
 
 ## Before You Ask Anything
 
-1. If `CONTEXT.md` exists in the project root, read it. Use the terminology defined there — never invent synonyms for existing terms. If it doesn't exist, note this after the interview and suggest `/grill-with-docs` to create it.
+1. If `CONTEXT.md` exists in the project root, read it. Use the terminology defined there — never invent synonyms for existing terms. If it doesn't exist, note this after the interview and suggest running the `grill` skill with the plan stress-test mode to create it.
 2. Read CLAUDE.md (if present), relevant files, and the git branch name.
 3. Infer what you can. Only ask about what you genuinely cannot determine.
 

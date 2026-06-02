@@ -46,7 +46,7 @@ Create files lazily — only when you have something to write. If no `CONTEXT.md
 
 **Cross-reference with code** — When the user states how something works, check whether the code agrees. If you find a contradiction, surface it: "Your code cancels entire Orders, but you just said partial cancellation is possible — which is right?"
 
-**Update CONTEXT.md inline** — When a term is resolved, update `CONTEXT.md` right there. Don't batch these up — capture them as they happen. See [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md).
+**Update CONTEXT.md inline** — When a term is resolved, update `CONTEXT.md` right there. Don't batch these up — capture them as they happen. See `references/formats/context.md`.
 
 Don't couple `CONTEXT.md` to implementation details. Only include terms that are meaningful to domain experts.
 
@@ -55,4 +55,4 @@ Don't couple `CONTEXT.md` to implementation details. Only include terms that are
 2. Surprising without context — a future reader will wonder "why did they do it this way?"
 3. The result of a real trade-off — there were genuine alternatives and you picked one for specific reasons
 
-If any of the three is missing, skip the ADR. See [ADR-FORMAT.md](./ADR-FORMAT.md).
+If any of the three is missing, skip the ADR. See `references/formats/adr.md`.

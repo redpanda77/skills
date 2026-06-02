@@ -20,7 +20,7 @@ Scan the current session context and check for:
 | Signal | Handoff type |
 |--------|-------------|
 | git repo + edited source files + plan/todos | **Code task** |
-| requirements/, context files, running skill workflow (e.g. grill-me, launchpad) | **Document/workflow** |
+| requirements/, context files, running skill workflow (e.g. grill, launchpad) | **Document/workflow** |
 | Neither of the above | **Lightweight** |
 
 ## Step 3 — Write the document
@@ -73,7 +73,7 @@ status: in-progress
 
 ## Document Progress
 <!-- Bullet list of docs that exist (✓) vs. still to write (○), each with path.
-     For structured workflows (grill-me, launchpad, etc.) note the last completed phase and the next. -->
+     For structured workflows (grill, launchpad, etc.) note the last completed phase and the next. -->
 
 ## What Worked / What Didn't
 <!-- Key decisions or dead ends. Only include if non-obvious. -->

@@ -27,7 +27,7 @@ Before writing anything, read the relevant references and make decisions:
   - Local (`CLAUDE.local.md`) → personal overrides, gitignored
 - [ ] **Determine if CONTEXT.md exists:**
   - If yes → read it, reference it in CLAUDE.md, never contradict its terms
-  - If no → suggest running `/grill-with-docs` to create one
+  - If no → suggest running `/grill` to create one
 - [ ] **Determine if nested files needed:**
   - Run the decision tree in `references/nested-decisions.md`
   - Multi-package repo? → nested CLAUDE.md per package
@@ -222,4 +222,4 @@ Fill the relevant template. Only cover the 5 sections that matter:
   - Add `CLAUDE.local.md` to `.gitignore`
   - Add CLAUDE.md review checkbox to PR template
   - Schedule quarterly pruning
-  - If no CONTEXT.md, suggest `/grill-with-docs`
+  - If no CONTEXT.md, suggest `/grill`
