@@ -1,6 +1,6 @@
 # redpanda77 skills
 
-Agent skills for Claude Code and compatible agents. The flagship skill is **mission-control** — a compiler operating system for reliable, repeatable agent execution. Also includes knowledge vaults (tolaria-wiki), interviewing and planning workflows (grill), planning workflows (writing-plans), handoffs, skill authoring, and CLAUDE.md / AGENTS.md writing.
+Agent skills for Claude Code and compatible agents. The flagship skill is **mission-control** — a compiler operating system for reliable, repeatable agent execution. Also includes knowledge vaults (tolaria-wiki), interviewing and planning workflows (grill), planning workflows (writing-plans), handoffs, skill authoring, skill repository management, and CLAUDE.md / AGENTS.md writing.
 
 ## Original Skills
 
@@ -59,6 +59,7 @@ The following skills are derived from official Anthropic documentation and best 
 - **write-a-skill** — Create agent skills with proper structure, progressive disclosure, and bundled resources. Covers the skill format, frontmatter design, supporting files, and progressive disclosure principles.
 - **claude-code-guide** — Unified router and guide to Claude Code (CLI, Agent SDK, API). Routes to product features (memory, permissions, settings, CLI), custom agents (subagents, teams, frontmatter, patterns), and hooks (events, matchers, automation, security).
 - **creating-codex-environments** — Scaffolds local Codex configuration, custom agents, hooks, and skills. Used when setting up Codex for a repo. Do not use for Claude Code or Claude Desktop setup.
+- **skill-repo-manager** — Manage a skill repository using the `npx skills` CLI. Covers installing, listing, updating, removing, and publishing skills. Includes the skill format specification, directory structure, and publishing best practices.
 
 ## Install
 
@@ -108,6 +109,7 @@ For Claude Code, the primary location is `.agents/skills/<skill-name>/`.
 | `creating-codex-environments` | Anthropic | Scaffold local Codex configuration: custom agents, hooks, and skills |
 | `applying-thinking-frameworks` | cc-thinking-skills | Apply structured thinking methodologies (first principles, systems thinking, 5 whys, etc.) to solve problems and make decisions. Routes to the right mental model based on domain and problem type |
 | `writing-plans` | Original | Write, structure, or audit a project improvement plan with knockout files and 7-step methodology |
+| `skill-repo-manager` | Original | Manage a skill repository using the `npx skills` CLI. Covers installing, listing, updating, and publishing skills |
 
 ## Test before publishing
 
