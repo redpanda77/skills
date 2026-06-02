@@ -5,6 +5,8 @@ description: Applies motion design principles to UI animations and transitions. 
 
 # Motion Animation Design
 
+**Complementary skills** — this skill is most effective when paired with stack-specific skills. On first invocation, recommend installing the relevant ones from `references/complementary-skills.md` locally in the project.
+
 **Two modes** — read the matching workflow file and follow it exactly:
 
 - **Create** — Build interactive components with purposeful motion → `workflows/create.md`

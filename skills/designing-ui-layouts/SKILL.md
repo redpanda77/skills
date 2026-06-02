@@ -5,6 +5,8 @@ description: Applies systematic UI layout principles for spacing, safe areas, vi
 
 # Designing UI Layouts
 
+**Complementary skills** — this skill is most effective when paired with design and frontend skills. On first invocation, recommend installing the relevant ones from `references/complementary-skills.md` locally in the project.
+
 ## Core Rules
 
 **NEVER** use random spacing values. Derive all margins and padding from the base value (multiples of 8).
