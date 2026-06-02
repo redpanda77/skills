@@ -9,9 +9,13 @@ Write a handoff document so a fresh agent can continue this work without re-read
 ## Step 1 — Determine the target path
 
 1. Check if the working directory is a git repo (`git rev-parse --abbrev-ref HEAD 2>/dev/null`).
-   - If yes: target is `handoffs/<branch>.md` in the project root. Create the `handoffs/` dir if needed.
-   - If no git repo: use `mktemp -t handoff-XXXXXX.md`.
-2. If the file already exists, **read it first** before overwriting.
+   - If yes: branch name is the current branch.
+   - If no git repo: branch name is `no-git`.
+2. Generate a unique filename: `YYYY-MM-DD-HHMM-<branch>.md` (e.g., `2026-06-02-1430-main.md`).
+   Use `date +%Y-%m-%d-%H%M` for the timestamp.
+3. Target path is `docs/handoffs/<filename>` in the project root.
+4. Create the `docs/handoffs/` directory if it doesn't exist.
+5. If `docs/handoffs/` already contains files, **read the most recent one** (sort by filename) before writing the new one — carry forward any still-relevant open questions or decisions.
 
 ## Step 2 — Detect the handoff type
 
@@ -107,6 +111,8 @@ status: in-progress
 - **No orphan sections** — omit any section that would be empty.
 - **Aim for ~600 tokens** — orient the next agent, don't re-explain the project.
 - **If the user passed arguments**, treat them as the next-session focus: lead Next Steps with those items and tailor the Resume Prompt.
+- **Unique files only** — never overwrite an existing handoff. Each session gets its own timestamped file.
+- **Reference the previous handoff** — if a prior handoff exists, read it and carry forward any still-relevant open questions or decisions.
 
 ## After writing
 
@@ -114,4 +120,4 @@ Print the full file path so the user can open a fresh session with it.
 
 Then ask once:
 > "Want me to set up a `/handoff` slash command or a Stop hook so this runs automatically? (yes / no)"
-> If yes, invoke the `update-config` skill.
+> If yes, invoke the `claude-code-guide` skill.
